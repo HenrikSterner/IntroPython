@@ -14,8 +14,9 @@ Peter Sterner og Henrik Sterner
 Vi bruger uddrag af følgende to gratis og opensource bøger af af Jake Vanderplas: 
 1. (PY) [A Whirlwind Tour of Python](https://jakevdp.github.io/WhirlwindTourOfPython/)
 2. [Øvelser](https://github.com/HenrikSterner/PythonExercises/)
-3. [AdvPy] (https://python-course.eu/advanced-python/)
-4. [Noter] (https://github.com/HenrikSterner/PythonForDataScience/tree/master/noter)
+3. [Nybegynder Øvelser] (https://github.com/HenrikSterner/PythonExercises/blob/main/exercises/easyexercises.ipynb)
+4. [AdvPy] (https://python-course.eu/advanced-python/)
+5. [Noter] (https://github.com/HenrikSterner/PythonForDataScience/tree/master/noter)
 
 
 Bogen er gratis, og rummer en række kapitler i jupyter-formatet, som gør det muligt at kombinere tekst og kode. Derudover vil der være uddrag fra andre bøger og internet ressourcer.
