@@ -13,8 +13,8 @@ Peter Sterner og Henrik Sterner
 # Grundbog og øvelser
 Vi bruger uddrag af følgende to gratis og opensource bøger af af Jake Vanderplas: 
 1. (PY) [A Whirlwind Tour of Python](https://jakevdp.github.io/WhirlwindTourOfPython/)
-2. [Øvelser](https://github.com/HenrikSterner/PythonExercises/)
-3. [Nybegynder Øvelser] (https://github.com/HenrikSterner/PythonExercises/blob/main/exercises/easyexercises.ipynb)
+2. (ØP)[Øvelser](https://github.com/HenrikSterner/PythonExercises/)
+3. (ØP2)[Nybegynder Øvelser] (https://github.com/HenrikSterner/PythonExercises/blob/main/exercises/easyexercises.ipynb)
 4. [AdvPy] (https://python-course.eu/advanced-python/)
 5. [Noter] (https://github.com/HenrikSterner/PythonForDataScience/tree/master/noter)
 
@@ -40,7 +40,7 @@ Lav øvelserne i den rækkefølge som de står. Lav så mange som overhovedet mu
 Modul Nr       | Kapitel     | Indhold                     | Øvelser     |
 ----------- | ----------- | ----------------------------| ----------- |
 1          | PY: 1,2,3       | Intro til python, Colab og evt jupyter |   Installere og afprøve software         |
-2 | PY: 4 og 5 | Variabler og operatorer  | **1-3**,4-6 |
+2 | PY: 4 og 5 | Variabler og operatorer  | **ØP2 alle opgaver,1-3**,4-6 |
 3 | PY: 6 og 7 | Indbyggede typer og datastrukturer | **7-11**,12-14 |
 4 | PY: 8 og 11 | Løkker og betinget udførsel | **21-25**,26-27|
 5 | PY: 9 | Funktioner | **33** |
