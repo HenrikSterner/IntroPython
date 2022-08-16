@@ -12,7 +12,7 @@ Peter Sterner og Henrik Sterner
 
 # Grundbog og øvelser
 Vi bruger uddrag af følgende to gratis og opensource bøger af af Jake Vanderplas: 
-1. (PY) [A Whirlwind Tour of Python](https://jakevdp.github.io/WhirlwindTourOfPython/)
+1. (PY) [Grundbog: A Whirlwind Tour of Python](https://jakevdp.github.io/WhirlwindTourOfPython/)
 2. (ØP) [Middelsvære Øvelser](https://github.com/HenrikSterner/PythonExercises/)
 3. (ØP2) [Nybegynder Øvelser](https://github.com/HenrikSterner/PythonExercises/blob/main/exercises/easyexercises.ipynb)
 4. (AdvPy) [Videregående Python](https://python-course.eu/advanced-python/)
