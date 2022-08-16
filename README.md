@@ -15,8 +15,8 @@ Vi bruger uddrag af følgende to gratis og opensource bøger af af Jake Vanderpl
 1. (PY) [A Whirlwind Tour of Python](https://jakevdp.github.io/WhirlwindTourOfPython/)
 2. (ØP)[Middelsvære Øvelser](https://github.com/HenrikSterner/PythonExercises/)
 3. (ØP2)[Nybegynder Øvelser](https://github.com/HenrikSterner/PythonExercises/blob/main/exercises/easyexercises.ipynb)
-4. [AdvPy] (https://python-course.eu/advanced-python/)
-5. [Noter] (https://github.com/HenrikSterner/PythonForDataScience/tree/master/noter)
+4. (AdvPy) [Videregående Python](https://python-course.eu/advanced-python/)
+5. (Noter) [Noter](https://github.com/HenrikSterner/PythonForDataScience/tree/master/noter)
 
 
 Bogen er gratis, og rummer en række kapitler i jupyter-formatet, som gør det muligt at kombinere tekst og kode. Derudover vil der være uddrag fra andre bøger og internet ressourcer.
