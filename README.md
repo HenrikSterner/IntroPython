@@ -48,7 +48,7 @@ Modul Nr       | Kapitel     | Indhold                     | Øvelser     |
 7 | PY: 10 | Undtagelser | **32** |
 8 | PY: 11-12 | Operationer på lister |**34-35**, 28|
 9 | PY: 14 | Moduler og pakker | **37** |
-10 | PY: 15 | Strenge oglidt om regulære udtryk | **36, 29**, 30|
+10 | PY: 15 | Strenge og lidt om regulære udtryk | **36, 29**, 30|
 11 | Noter | Objektorienteret programmering og principperne bag | **38, 39, 40**|
 12 | PY11, AdvPy:5  | Videregående Python: Zip funktionen | **49** |
 13 | PY11, AdvPy:4  | Videregående Python: Lambda udtryk |**50** |
