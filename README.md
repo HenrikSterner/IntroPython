@@ -17,7 +17,6 @@ Vi bruger uddrag af følgende to gratis og opensource bøger af af Jake Vanderpl
 3. (ØP2) [Nybegynder Øvelser](https://github.com/HenrikSterner/PythonExercises/blob/main/exercises/easyexercises.ipynb)
 4. (AdvPy) [Videregående Python](https://python-course.eu/advanced-python/)
 5. (Noter) [Noter](https://github.com/HenrikSterner/PythonForDataScience/tree/master/noter)
-6. (THKPY) [How to Think Like a Computer Scientist](https://runestone.academy/ns/books/published/thinkcspy/index.html)
 
 
 Bogen er gratis, og rummer en række kapitler i jupyter-formatet, som gør det muligt at kombinere tekst og kode. Derudover vil der være uddrag fra andre bøger og internet ressourcer.
@@ -49,9 +48,8 @@ Modul Nr       | Kapitel     | Indhold                     | Øvelser     |
 7 | PY: 10 | Undtagelser | **32** |
 8 | PY: 11-12 | Operationer på lister |**34-35**, 28|
 9 | PY: 14 | Moduler og pakker | **37** |
-10 | PY: 15 | Strenge oglidt om regulære udtryk | **36, 29**, 30|
-11.1 | Noter | Objektorienteret programmering og principperne bag | **38, 39, 40**|
-11.2 | THKPY 17-19 | Mere om objekter | **38, 39, 40**|
+10 | PY: 15 | Strenge og lidt om regulære udtryk | **36, 29**, 30|
+11 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/slides/OOP.pdf) | Objektorienteret programmering og principperne bag | **38, 39, 40**|
 12 | PY11, AdvPy:5  | Videregående Python: Zip funktionen | **49** |
 13 | PY11, AdvPy:4  | Videregående Python: Lambda udtryk |**50** |
 14 | PY11, AdvPy:4  | Videregående Python: filter funktion | **53**|
