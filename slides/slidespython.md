@@ -57,6 +57,27 @@ Undlad at få hjælp fra AI m.m. Det lærer du ikke noget af.
 - Jupyter Notebook kan installeres via Anaconda og Visual Studio Code
 - Anaconda kan downloades fra: https://www.anaconda.com/products/individual 
 - Visual Studio Code kan downloades fra: https://code.visualstudio.com/
+
+# Installationsvejledning til Anaconda
+- Gå til adressen: https://www.anaconda.com/products/individual
+- Download Anaconda til dit operativsystem
+- Følg installationsvejledningen
+- Åbn Anaconda Navigator
+
+# Installationsvejledning til Visual Studio Code
+- Gå til adressen: https://code.visualstudio.com/
+- Download Visual Studio Code til dit operativsystem
+- Følg installationsvejledningen
+- Åbn Visual Studio Code
+- Installer Jupyter-plugin
+- Åbn Jupyter Notebook
+- Lav en ny notebook
+- Skriv noget kode i en celle 
+- Kør koden i cellen
+Koden kunne være: 
+```python
+print("Hej verden")
+```
  
 # Introduktion til Python
 - Python: Et populært og læsbar programmeringssprog
