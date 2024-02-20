@@ -13,10 +13,11 @@ Peter Sterner og Henrik Sterner
 # Grundbog og øvelser
 Vi bruger uddrag af følgende to gratis og opensource bøger af af Jake Vanderplas: 
 1. (PY) [Grundbog: A Whirlwind Tour of Python](https://jakevdp.github.io/WhirlwindTourOfPython/)
-2. (ØP) [Middelsvære Øvelser](https://github.com/HenrikSterner/PythonExercises/)
-3. (ØP2) [Nybegynder Øvelser](https://github.com/HenrikSterner/PythonExercises/blob/main/exercises/easyexercises.ipynb)
-4. (AdvPy) [Videregående Python](https://python-course.eu/advanced-python/)
-5. (Noter) [Noter](https://github.com/HenrikSterner/PythonForDataScience/tree/master/noter)
+2. (PY2) [Learn Python the right way](https://learnpythontherightway.com/)
+3. (ØP) [Middelsvære Øvelser](https://github.com/HenrikSterner/PythonExercises/)
+4. (ØP2) [Nybegynder Øvelser](https://github.com/HenrikSterner/PythonExercises/blob/main/exercises/easyexercises.ipynb)
+5. (AdvPy) [Videregående Python](https://python-course.eu/advanced-python/)
+6. (Noter) [Noter](https://github.com/HenrikSterner/PythonForDataScience/tree/master/noter)
 
 
 Bogen er gratis, og rummer en række kapitler i jupyter-formatet, som gør det muligt at kombinere tekst og kode. Derudover vil der være uddrag fra andre bøger og internet ressourcer.
@@ -44,7 +45,7 @@ Modul Nr       | Kapitel     | Indhold                     | Øvelser     |
 3 | PY: 6 og 7 | Indbyggede typer og datastrukturer | **7-11**,12-14 |
 4 | PY: 8 og 11 | Løkker og betinget udførsel | **21-25**,26-27|
 5 | PY: 9 | Funktioner | **33** |
-6 |   Øvelse    | WebApps og GUIs  | **41-42** |
+6 |   Øvelse    | WebApps og GUIs i streamlit  | **41-42** |
 7 | PY: 10 | Undtagelser | **32** |
 8 | PY: 11-12 | Operationer på lister |**34-35**, 28|
 9 | PY: 14 | Moduler og pakker | **37** |
