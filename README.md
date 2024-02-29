@@ -31,12 +31,16 @@ Foretrækker du at kode lokalt anbefales VS Code og Anaconda:
 - [Visual Studio Code editor ](https://code.visualstudio.com/)
 - [Anaconda] (https://www.anaconda.com/products/individual) 
 - [Jupyter-plugin til Visual Studio Code] (https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter). 
+- [Python plugin til Visual Studio Code] (https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
 # Undervisningsplan
 Herunder en tentativ plan for undervisningen, der opdateres undervejs. Øvelser refererer til numre i øvelsesdokumentet [Øvelser](https://github.com/HenrikSterner/PythonExercises/). 
 Lav øvelserne i den rækkefølge som de står. Lav så mange som overhovedet muligt. Den eneste måde at blive god til faget er ved at øve sig regelmæssigt og så meget som overhovedet muligt. Træning gør mester! Gå ikke videre før du har styr på det fundamentale. Øvelser med fed skrift skal afleveres i Lectio.
 
-## Programmering i Python
+
+
+## Undervisningsplan
+Herunder en tentativ undervisningsplan. I behøver ikke læse kapitlerne. Det er mest for dem som vil vide mere. Mine [slides i pdf](https://github.com/HenrikSterner/IntroPython/blob/main/slides/slidespython.pdf) eller [slides i md](https://github.com/HenrikSterner/IntroPython/blob/main/slides/slidespython.md) opsummerer de vigtigste pointer.
 
 Modul Nr       | Kapitel     | Indhold                     | Øvelser     |
 ----------- | ----------- | ----------------------------| ----------- |
