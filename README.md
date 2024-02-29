@@ -22,6 +22,9 @@ Vi bruger uddrag af følgende to gratis og opensource bøger af af Jake Vanderpl
 
 Bogen er gratis, og rummer en række kapitler i jupyter-formatet, som gør det muligt at kombinere tekst og kode. Derudover vil der være uddrag fra andre bøger og internet ressourcer.
 
+# Slides
+I behøver ikke nødvendigvis læse kapitlerne. Det er mest for dem som vil vide mere. Mine [slides i pdf](https://github.com/HenrikSterner/IntroPython/blob/main/slides/slidespython.pdf) eller [slides i md](https://github.com/HenrikSterner/IntroPython/blob/main/slides/slidespython.md) opsummerer de vigtigste pointer.
+
 # Software
 Kurset forudsætter at du kan afvikle Python og tilhørende pakker enten i skyen eller på din egen computer. 
 Du kan nemt og bekvemt skrive, afvikle og sågar dele Python i skyen ved brug af:
@@ -33,6 +36,8 @@ Foretrækker du at kode lokalt anbefales VS Code og Anaconda:
 - [Jupyter-plugin til Visual Studio Code] (https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter). 
 - [Python plugin til Visual Studio Code] (https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
+
+
 # Undervisningsplan
 Herunder en tentativ plan for undervisningen, der opdateres undervejs. Øvelser refererer til numre i øvelsesdokumentet [Øvelser](https://github.com/HenrikSterner/PythonExercises/). 
 Lav øvelserne i den rækkefølge som de står. Lav så mange som overhovedet muligt. Den eneste måde at blive god til faget er ved at øve sig regelmæssigt og så meget som overhovedet muligt. Træning gør mester! Gå ikke videre før du har styr på det fundamentale. Øvelser med fed skrift skal afleveres i Lectio.
@@ -40,7 +45,6 @@ Lav øvelserne i den rækkefølge som de står. Lav så mange som overhovedet mu
 
 
 ## Undervisningsplan
-Herunder en tentativ undervisningsplan. I behøver ikke læse kapitlerne. Det er mest for dem som vil vide mere. Mine [slides i pdf](https://github.com/HenrikSterner/IntroPython/blob/main/slides/slidespython.pdf) eller [slides i md](https://github.com/HenrikSterner/IntroPython/blob/main/slides/slidespython.md) opsummerer de vigtigste pointer.
 
 Modul Nr       | Kapitel     | Indhold                     | Øvelser     |
 ----------- | ----------- | ----------------------------| ----------- |
