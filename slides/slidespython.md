@@ -221,6 +221,19 @@ pris = "9.99"
 pris_decimal = float(pris)
 ```
 
+# Typen af en Variabel
+Vi kan bruge funktionen type() til at finde typen af en variabel    
+```python
+tekst = "Hej verden"
+print(type(tekst))  # Resultat: <class 'str'>
+alder = 25
+print(type(alder))  # Resultat: <class 'int'>
+pris = 9.99
+print(type(pris))  # Resultat: <class 'float'>
+```
+
+
+
 # Indbyggede Funktioner til Typer
 ```python
 længde = len("Hej verden")
@@ -292,6 +305,28 @@ if isinstance(x, int):
 else:
     print("x er ikke et heltal")
 ``` 
+
+# Bitvis operatorer i teori
+Herunder en tabel over bitvis operatorer:
+- & (bitvis og) - Hvis begge bits er 1, så er resultatet 1, ellers 0
+- | (bitvis eller) - Hvis en af bits er 1, så er resultatet 1, ellers 0
+- ^ (bitvis eksklusiv eller) - Hvis bits er forskellige, så er resultatet 1, ellers 0
+- ~ (bitvis negation) - Hvis bit er 1, så er resultatet 0, ellers 1
+- << (bitvis venstreskift) - Skift bits til venstre
+- >> (bitvis højreskift) - Skift bits til højre
+
+
+# Bitvis operatorer eksempler
+```python
+a = 5
+b = 2
+print(a & b)  # Resultat: 0
+print(a | b)  # Resultat: 7
+print(a ^ b)  # Resultat: 7
+print(~a)  # Resultat: -6
+print(a << 1)  # Resultat: 10
+print(a >> 1)  # Resultat: 2
+```
 
 # Hvad er brugerinput i Python?
 Brugerinput er:
