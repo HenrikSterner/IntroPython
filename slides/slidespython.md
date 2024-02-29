@@ -94,7 +94,6 @@ print("Hej verden")
 - Python er et sprog med mange biblioteker
   
 # Datascience biblioteker med Python
-Vi vender tilbage til disse biblioteker senere i kurset:
 - Numpy: Matematik og videnskabelige beregninger
 - Pandas: Dataanalyse og datahåndtering
 - Matplotlib: Visualisering af data
@@ -133,7 +132,6 @@ er_student = True
 
 
 # Navngivningsregler for variabler
-
 - Variabelnavne kan indeholde bogstaver, tal og understregning
 - Variabelnavne må ikke starte med et tal
 - Variabelnavne må ikke indeholde mellemrum
@@ -222,7 +220,6 @@ pris_decimal = float(pris)
 ```
 
 # Typen af en Variabel
-Vi kan bruge funktionen type() til at finde typen af en variabel    
 ```python
 tekst = "Hej verden"
 print(type(tekst))  # Resultat: <class 'str'>
@@ -249,7 +246,6 @@ liste_a.append(4)
 print(liste_b)  # Resultat: [1, 2, 3, 4]
 ```
 # Operationer på Variabler
-Operationer udføres på variabler:
 - Addition, subtraktion, multiplikation og division
 - Potens, kvadratrod og modulo
 - Sammenligning, logisk og bitvis
@@ -307,7 +303,6 @@ else:
 ``` 
 
 # Bitvis operatorer i teori
-Herunder en tabel over bitvis operatorer:
 - & (bitvis og) - Hvis begge bits er 1, så er resultatet 1, ellers 0
 - | (bitvis eller) - Hvis en af bits er 1, så er resultatet 1, ellers 0
 - ^ (bitvis eksklusiv eller) - Hvis bits er forskellige, så er resultatet 1, ellers 0
@@ -329,7 +324,6 @@ print(a >> 1)  # Resultat: 2
 ```
 
 # Hvad er brugerinput i Python?
-Brugerinput er:
 - Input fra brugeren
 - Input fra tastaturet
 - Input fra en fil
@@ -339,12 +333,27 @@ Brugerinput er:
 - Input fra en anden enhed
 Vi kan bruge kommadoen input() til at få brugerinput i Python
 
-
 # Brugerinput med input()
-```python
 ```python
 navn = input("Hvad hedder du? ")
 alder = int(input("Hvor gammel er du? "))
+```
+
+# Brugerinput med input() og typekonvertering
+```python
+alder = int(input("Hvor gammel er du? "))
+højde = float(input("Hvor høj er du i meter? "))
+```
+
+# Brugerinput med input() med typetjek  og fejlhåndtering
+```python
+while True:
+    alder = input("Hvor gammel er du? ")
+    if alder.isdigit():
+        alder = int(alder)
+        break
+    else:
+        print("Indtast venligst et heltal")
 ```
 
 # Brugerinput bmi-beregner
@@ -438,6 +447,7 @@ print(besked.endswith("Hej"))  # Resultat: False
 print(besked.find("verden"))  # Resultat: 4
 print(besked.find("ikke"))  # Resultat: -1
 ```
+
 # Brugen af split og join
 ```python
 besked = "Hej verden"
@@ -464,7 +474,6 @@ print(f"Hej, jeg hedder {navn} og er {alder} år gammel")
 ```
 
 # Brugen af format med tal
-
 ```python
 tal = 3.14159265359
 print("{:.2f}".format(tal))  # Resultat: 3.14
@@ -594,10 +603,39 @@ else:
         print("Du er i livsfare")
 ```
 
+# Switch-sætninger findes ikke i Python
+- Python har ikke switch-sætninger
+- Vi bruger if-elif-else-sætninger i stedet
+- Vi kan bruge en dictionary til at simulere en switch-sætning
+- Vi kan bruge en funktion til at simulere en switch-sætning
 
+# Switch-sætning med dictionary
+```python
+def switch(case):
+    return {
+        "1": "Du valgte 1",
+        "2": "Du valgte 2",
+        "3": "Du valgte 3"
+    }.get(case, "Ugyldigt valg")
+```
+
+# Switch-sætning med funktion
+```python
+def case1():
+    return "Du valgte 1"
+def case2():
+    return "Du valgte 2"
+def case3():
+    return "Du valgte 3"
+def switch(case):
+    return {
+        "1": case1,
+        "2": case2,
+        "3": case3
+    }.get(case, "Ugyldigt valg")()
+```
 
 # Intro til løkker
-
 - Løkker bruges til at gentage kode
 - Løkker bruges til at udføre kode et bestemt antal gange
 - Løkker bruges til at udføre kode indtil en betingelse er opfyldt
@@ -745,6 +783,7 @@ for i in range(10):
 else:
     print("Færdig")
 ```
+break afbryder løkken og else udføres ikke.
 
 ```python
 i = 0  
@@ -756,6 +795,7 @@ while i < 10:
 else:
     print("Færdig")
 ```
+break afbryder løkken og else udføres ikke.
 
 # Løkker med else og continue
 ```python
@@ -766,6 +806,7 @@ for i in range(10):
 else:
     print("Færdig")
 ```
+continue springer til næste iteration og else udføres.
 
 ```python
 i = 0
@@ -777,6 +818,8 @@ while i < 10:
 else:
     print("Færdig")
 ```
+continue springer til næste iteration og else udføres.
+
 # Liste comprehension i Python
 - Liste comprehension er en smart måde at lave lister på
 - Smart i den forstand at det er kortere og hurtigere
@@ -798,13 +841,14 @@ print(liste)  # Resultat: [0, 2, 4, 6, 8]
 
 # Listecomprehension med for løkker og flere løkker
 ```python
-liste = [(i, j) for i in range(3) for j in range(3)]
+liste = [(i, j) for i in range(3) 
+                for j in range(3)]
 print(liste)  # Resultat: [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
 ```
 
 # Listecomprehension med for løkker og flere løkker og betingelse
 ```python
-liste = [(i, j) for i in range(3) for j in range(3) if i != j]
+liste = [(i, j) for i in range(3)                    for j in range(3) if i != j]
 print(liste)  # Resultat: [(0, 1), (0, 2), (1, 0), (1, 2), (2, 0), (2, 1)]
 ```
 # Funktioner i Python
@@ -814,16 +858,16 @@ print(liste)  # Resultat: [(0, 1), (0, 2), (1, 0), (1, 2), (2, 0), (2, 1)]
 - Det er smart at bruge funktioner fordi det gør koden mere genbrugelig, mere testbar og mere fejlsikker
 
 # Funktioners opbygning
-- Funtioner defineres på formen: 
 ```python	
 def navn(argumenter):
     instruktioner
 ```
 De behøver ikke at have argumenter eller returværdier. 
-- Funktioner kaldes på formen: 
+
 ```python
 navn(argumenter)
 ```
+
 # Funktioner uden argumenter
 ```python
 def hilsen():
@@ -925,6 +969,405 @@ def hilsen(navn, antal):
             break
 hilsen("Alice", 3)
 ```
+
+# Funktioner med prædefinerede argumenter
+```python
+def hilsen(navn="verden"):
+    print("Hej " + navn)
+hilsen()  # Resultat: Hej verden
+hilsen("Alice")  # Resultat: Hej Alice
+```
+
+# Funktioner med vilkårligt antal argumenter
+```python
+def hilsen(*navne):
+    for navn in navne:
+        print("Hej " + navn)
+hilsen("Alice", "Bob", "Charlie")
+```
+
+# Funktioner med vilkårligt antal argumenter og prædefinerede argumenter
+```python
+def hilsen(*navne, hilsen="Hej"):
+    for navn in navne:
+        print(hilsen + " " + navn)
+hilsen("Alice", "Bob", "Charlie", hilsen="Goddag")
+```
+
+# Funktioner med vilkårligt antal argumenter og prædefinerede argumenter og returværdi
+```python
+def hilsen(*navne, hilsen="Hej"):
+    tekst = ""
+    for navn in navne:
+        tekst += hilsen + " " + navn + "\n"
+    return tekst
+hilsentekst = hilsen("Alice", "Bob", "Charlie", hilsen="Goddag")
+print(hilsentekst)
+```
+
+# Filinput og filoutput i Python
+- Filinput og filoutput bruges til at læse og skrive filer
+- Filinput og filoutput bruges til at gemme og hente data
+- Data kan være tekst, tal, billeder, lyd, video, osv.
+
+# Filinput med open()
+```python
+fil = open("tekstfil.txt", "r")
+tekst = fil.read()
+print(tekst)
+fil.close()
+```
+
+# Filoutput med open()
+```python
+fil = open("tekstfil.txt", "w")
+fil.write("Hej verden")
+fil.close()
+```
+
+# Filinput med open() og with
+```python
+with open("tekstfil.txt", "r") as fil:
+    tekst = fil.read()
+    print(tekst)
+```
+with sørger for at filen lukkes efter brug.
+
+# Filoutput med open() og with
+```python
+with open("tekstfil.txt", "w") as fil:
+    fil.write("Hej verden")
+```
+with sørger for at filen lukkes efter brug.
+
+# Filinput med open() og fejlhåndtering
+```python
+try:
+    fil = open("tekstfil.txt", "r")
+    tekst = fil.read()
+    print(tekst)
+except FileNotFoundError:
+    print("Filen blev ikke fundet")
+finally:
+    fil.close()
+```
+
+# Filoutput med open() og fejlhåndtering
+```python
+try:
+    fil = open("tekstfil.txt", "w")
+    fil.write("Hej verden")
+except PermissionError:
+    print("Du har ikke tilladelse til at skrive til filen")
+finally:
+    fil.close()
+```
+
+# Filinput med open() og fejlhåndtering og with
+```python
+try:
+    with open("tekstfil.txt", "r") as fil:
+        tekst = fil.read()
+        print(tekst)
+except FileNotFoundError:
+    print("Filen blev ikke fundet")
+```
+
+# Læsning af fil med read()
+```python
+with open("tekstfil.txt", "r") as fil:
+    tekst = fil.read()
+    print(tekst)
+```
+
+# Læsning af fil med readline()
+```python
+with open("tekstfil.txt", "r") as fil:
+    linje = fil.readline()
+    while linje:
+        print(linje, end="")
+        linje = fil.readline()
+```
+
+# Læsning af fil med readlines()
+```python
+with open("tekstfil.txt", "r") as fil:
+    linjer = fil.readlines()
+    for linje in linjer:
+        print(linje, end="")
+```
+
+# Skrivning af fil med write()
+```python
+with open("tekstfil.txt", "w") as fil:
+    fil.write("Hej verden")
+```
+
+# Skrivning af fil med writelines()
+```python
+with open("tekstfil.txt", "w") as fil:
+    fil.writelines(["Hej\n", "verden\n"])
+```
+
+# Skrivning af fil med append()
+```python
+with open("tekstfil.txt", "a") as fil:
+    fil.write("Hej verden")
+```
+
+# Skrivning af fil med append og writelines()
+```python
+with open("tekstfil.txt", "a") as fil:
+    fil.writelines(["Hej\n", "verden\n"])
+```
+
+# Skrivning af fil med append og write()
+```python
+with open("tekstfil.txt", "a") as fil:
+    fil.write("Hej verden")
+```
+
+# Fejlhåndtering i Python
+- Fejlhåndtering bruges til at håndtere fejl
+- Fejlhåndtering bruges til at undgå at programmet går i stå
+- Fejlhåndtering bruges til at give brugeren en besked
+- Fejlhåndtering bruges til at logge fejl
+- Fejlhåndtering bruges til at håndtere uventede situationer
+
+# Fejlhåndtering med try og except
+```python
+try:
+    print(x)
+except NameError:
+    print("Variablen findes ikke")
+```
+
+# Fejlhåndtering med try og except og flere fejl
+```python
+try:
+    print(x)
+except NameError:
+    print("Variablen findes ikke")
+except:
+    print("Noget gik galt")
+```
+
+# Fejlhåndtering med try og except og flere fejl og else
+```python
+try:
+    print(x)
+except NameError:
+    print("Variablen findes ikke")
+except:
+    print("Noget gik galt")
+else:
+    print("Ingen fejl")
+```
+Her udføres else hvis der ikke er nogen fejl.
+
+# Fejlhåndtering med try og except og flere fejl og else og finally
+```python
+try:
+    print(x)
+except NameError:
+    print("Variablen findes ikke")
+except:
+    print("Noget gik galt")
+else:
+    print("Ingen fejl")
+finally:
+    print("Uanset hvad")
+```
+
+# Fejlhåndtering med raise
+```python
+x = -1
+if x < 0:
+    raise Exception("Tallet er mindre end 0")
+```
+
+# Fejlhåndtering med assert
+```python
+x = "Hej"
+assert x == "Hej", "Teksten er ikke
+```
+Her udføres assert hvis betingelsen er sand ellers udføres en fejlmeddelelse.   
+
+# Typer af fejl i Python
+- SyntaxError: Fejl i syntaksen
+- IndentationError: Fejl i indrykning
+- NameError: Variabel findes ikke
+- TypeError: Forkert type
+- ValueError: Forkert værdi
+- ZeroDivisionError: Division med nul
+- FileNotFoundError:   Filen findes ikke
+- PermissionError: Manglende tilladelse
+- osv.
+
+# Typer af exception i Python
+- Exception: Generel fejl
+- AssertionError: Fejl i assert
+- AttributeError: Attribut findes ikke
+- ImportError: Modul findes ikke
+- IndexError: Indeks findes ikke
+- KeyError: Nøgle findes ikke
+- KeyboardInterrupt: Bruger afbryder program
+- osv.
+
+# Indlæsning af csv-fil med fejlhåndtering
+```python 
+import csv
+try:
+    with open("data.csv", "r") as fil:
+        data = csv.reader(fil)
+        for række in data:
+            print(række)
+except FileNotFoundError:
+    print("Filen blev ikke fundet")
+```
+
+# Skrivning af csv-fil med fejlhåndtering
+```python
+import csv
+try:
+    with open("data.csv", "w") as fil:
+        data = csv.writer(fil)
+        data.writerow(["Navn", "Alder"])
+        data.writerow(["Alice", 30])
+        data.writerow(["Bob", 25])
+except PermissionError:
+    print("Du har ikke tilladelse til at skrive til filen")
+```
+
+# Moduler i Python
+- Moduler er en samling af funktioner, klasser og variabler. 
+- Moduler bruges til at organisere kode.
+- Moduler bruges til at genbruge kode.
+
+# Import af moduler
+```python
+import math
+print(math.pi)  # Resultat: 3.141592653589793
+```
+
+# Import af moduler med alias
+```python
+import math as m
+print(m.pi)  # Resultat: 3.141592653589793
+```
+
+# Import af moduler med from
+```python
+from math import pi
+print(pi)  # Resultat: 3.141592653589793
+```
+Med from kan vi importere en specifik funktion, klasse eller variabel.
+
+# Import af moduler med from og alias
+```python
+from math import pi as p
+print(p)  # Resultat: 3.141592653589793
+```
+Med from kan vi importere en specifik funktion, klasse eller variabel og give den et alias.
+
+# Import af moduler med from og *
+```python
+from math import *
+print(pi)  # Resultat: 3.141592653589793
+```
+Med from kan vi importere alle funktioner, klasser og variabler. Og * betyder alle.
+
+# Import af moduler med sys.path
+```python
+import sys
+print(sys.path)
+```
+sys.path er en liste af stier hvor Python leder efter moduler.
+
+# Import af moduler med sys.path.append()
+```python
+import sys
+sys.path.append("C:/bruger/brugernavn")
+```
+sys.path.append() tilføjer en sti til sys.path.
+
+# Import af moduler med sys.path.remove()
+```python
+import sys
+sys.path.remove("C:/bruger/brugernavn")
+```
+sys.path.remove() fjerner en sti fra sys.path.
+
+# Import af moduler med sys.path.insert()
+```python
+import sys
+sys.path.insert(0, "C:/bruger/brugernavn")
+```
+sys.path.insert() indsætter en sti i sys.path.
+
+# Lav dine egne moduler
+```python
+# minmodul.py
+def hilsen(navn):
+    print("Hej " + navn)
+```
+
+```python
+import minmodul
+minmodul.hilsen("Alice")  # Resultat: Hej Alice
+```
+
+# Lav dine egne moduler med alias
+```python
+# minmodul.py
+def hilsen(navn):
+    print("Hej " + navn)
+```
+
+```python
+import minmodul as m
+m.hilsen("Alice")  # Resultat: Hej Alice
+```
+
+# Lav dine egne moduler med from
+```python
+# minmodul.py
+def hilsen(navn):
+    print("Hej " + navn)
+```
+
+```python
+from minmodul import hilsen
+hilsen("Alice")  # Resultat: Hej Alice
+```
+
+# Lav dine egne moduler med from og alias
+```python
+# minmodul.py
+def hilsen(navn):
+    print("Hej " + navn)
+```
+
+```python
+from minmodul import hilsen as h
+h("Alice")  # Resultat: Hej Alice
+```
+
+# Lav dine egne moduler med from og *
+```python
+# minmodul.py
+def hilsen(navn):
+    print("Hej " + navn)
+```
+
+```python
+from minmodul import *
+hilsen("Alice")  # Resultat: Hej Alice
+```
+
+
+
+
 
 
 
