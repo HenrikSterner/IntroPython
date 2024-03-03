@@ -27,6 +27,12 @@ pandoc -t beamer -o slidespython.pdf slidespython.md
 pandoc -t docx -o slidespython.docx slidespython.md
 ```
 
+- Fra markdown til pdf hvor sektioner tilføjes som hovedpunkter i pdf'en:
+```bash
+pandoc -t beamer -o slidespython.pdf slidespython.md --toc
+```
+
+
 # Øvelser og software brugt
 Det er ekstremt vigtigt at lave en masse øvelser. Da det træner brugen af de grundlæggende strukturer. Programmering er en praktisk disciplin - et håndværk. Og man bliver ikke god til et håndværk uden at øve sig.
 
@@ -430,6 +436,54 @@ print("Hej, jeg hedder {} og er {} år gammel".format(navn, alder))
 print(f"Hej, jeg hedder {navn} og er {alder} år gammel")
 ```
 
+# Indexing og slicing af strengen S
+- S[0] er det første tegn i strengen
+- S[i] - Returnerer det i'te tegn i strengen
+- Negativt indeks tæller fra slutningen af strengen
+- S[-2] henter det næstsidste tegn i strengen. 
+- S[-2]=S[len(S)-2]
+
+# Indexing og slicing af strengen S - eksempel
+```python
+tekst = "Hej verden"
+print(tekst[0])  # Resultat: H
+print(tekst[1])  # Resultat: e
+print(tekst[-1])  # Resultat: n
+print(tekst[-2])  # Resultat: e
+```
+
+# Indexing og slicing af strengen S[i:j] - eksempel
+- S[i:j] - Returnerer en delstreng af S fra indeks i til j-1
+- S[i:] - Returnerer en delstreng af S fra indeks i til slutningen af strengen
+- S[:j] - Returnerer en delstreng af S fra starten af strengen til indeks j-1
+- S[:] - Returnerer hele strengen
+- S[i:j:k] - Returnerer en delstreng af S fra indeks i til j-1 med skridt k
+
+# Indexing og slicing af strengen S[i:j] - eksempel
+```python
+tekst = "Hej verden"
+print(tekst[0:3])  # Resultat: Hej
+print(tekst[4:9])  # Resultat: verden
+print(tekst[:3])  # Resultat: Hej
+print(tekst[4:])  # Resultat: verden
+print(tekst[:])  # Resultat: Hej verden
+print(tekst[0:9:2])  # Resultat: Hjvn
+```
+
+# Konvertering af karakterer til tal
+- Vi kan konvertere karakterer til tal ved brug af ord() funktionen. Funktionen returnerer Unicode værdien af et tegn.
+- Vi kan konvertere tal til karakterer ved brug af chr() funktionen. Funktionen returnerer tegnet, der svarer til Unicode værdien.
+- Unicode er en international standard, der tillader tegn fra alle sprog og symboler at blive repræsenteret med en unik numerisk kode.
+- Unicode værdier er tal i intervallet 0 til 1114111.
+- Unicode værdier for almindelige tegn er de samme som ASCII værdierne.
+
+
+# Konvertering af karakterer til tal - eksempel
+```python
+print(ord("A"))  # Resultat: 65
+print(chr(65))  # Resultat: A
+```
+
 # Metoder på strenge
 ```python
 besked = "Hej verden"
@@ -462,6 +516,29 @@ print(ny_besked)  # Resultat: Hej verden
 besked = "   Hej verden   "
 print(besked.strip())  # Resultat: Hej verden
 ```
+
+# Strengformatering med %
+- %s - Streng (eller enhver anden objekt)
+- %d - Heltal
+- %f - Decimaltal
+- %e - Videnskabelig notation
+- %x - Hexadecimaltal
+- %c - Tegn
+- %r - Repræsentation af objekt
+- %% - Procenttegn
+- %10s - Streng med 10 tegn
+- %-10s - Streng med 10 tegn til venstre
+- %10d - Heltal med 10 tegn
+
+# Strengformatering med % eksempel
+```python
+navn = "Alice"
+alder = 30
+print("Hej, jeg hedder %s og er %d år gammel" % (navn, alder)) # Resultat: Hej, jeg hedder Alice og er 30 år gammel
+print("Hej, jeg hedder %10s og er %10d år gammel" % (navn, alder)) # Resultat: Hej, jeg hedder      Alice og er         30 år gammel
+print("Hej, jeg hedder %-10s og er %-10d år gammel" % (navn, alder)) # Resultat: Hej, jeg hedder Alice      og er 30        år gammel   
+```
+
 
 # Brugen af format
 ```python
