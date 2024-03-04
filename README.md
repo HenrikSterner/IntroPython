@@ -13,17 +13,13 @@ Peter Sterner og Henrik Sterner
 # Grundbog og øvelser
 Vi bruger uddrag af følgende to gratis og opensource bøger af af Jake Vanderplas: 
 1. (PY) [Grundbog: A Whirlwind Tour of Python](https://jakevdp.github.io/WhirlwindTourOfPython/)
-2. (PY2) [Learn Python the right way](https://learnpythontherightway.com/)
-3. (ØP) [Middelsvære Øvelser](https://github.com/HenrikSterner/PythonExercises/)
-4. (ØP2) [Nybegynder Øvelser](https://github.com/HenrikSterner/PythonExercises/blob/main/exercises/easyexercises.ipynb)
-5. (AdvPy) [Videregående Python](https://python-course.eu/advanced-python/)
-6. (Noter) [Noter](https://github.com/HenrikSterner/PythonForDataScience/tree/master/noter)
+2. (ØP) [Middelsvære Øvelser](https://github.com/HenrikSterner/PythonExercises/)
+3. (ØP2) [Nybegynder Øvelser](https://github.com/HenrikSterner/PythonExercises/blob/main/exercises/easyexercises.ipynb)
+4. (AdvPy) [Videregående Python](https://python-course.eu/advanced-python/)
+5. (Noter) [Noter](https://github.com/HenrikSterner/PythonForDataScience/tree/master/noter)
 
 
 Bogen er gratis, og rummer en række kapitler i jupyter-formatet, som gør det muligt at kombinere tekst og kode. Derudover vil der være uddrag fra andre bøger og internet ressourcer.
-
-# Slides
-I behøver ikke nødvendigvis læse kapitlerne. Det er mest for dem som vil vide mere. Mine [slides i pdf](https://github.com/HenrikSterner/IntroPython/blob/main/slides/slidespython.pdf) eller [slides i md](https://github.com/HenrikSterner/IntroPython/blob/main/slides/slidespython.md) opsummerer de vigtigste pointer.
 
 # Software
 Kurset forudsætter at du kan afvikle Python og tilhørende pakker enten i skyen eller på din egen computer. 
@@ -32,19 +28,17 @@ Du kan nemt og bekvemt skrive, afvikle og sågar dele Python i skyen ved brug af
 
 Foretrækker du at kode lokalt anbefales VS Code og Anaconda:
 - [Visual Studio Code editor ](https://code.visualstudio.com/)
-- [Anaconda] (https://www.anaconda.com/products/individual) 
-- [Jupyter-plugin til Visual Studio Code] (https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter). 
-- [Python plugin til Visual Studio Code] (https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+- [Anaconda](https://www.anaconda.com/products/individual) 
+- [Jupyter-plugin til Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter). 
+- [Python plugin til Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
-
+Vi bruger Python 3.8 eller nyere.
 
 # Undervisningsplan
 Herunder en tentativ plan for undervisningen, der opdateres undervejs. Øvelser refererer til numre i øvelsesdokumentet [Øvelser](https://github.com/HenrikSterner/PythonExercises/). 
 Lav øvelserne i den rækkefølge som de står. Lav så mange som overhovedet muligt. Den eneste måde at blive god til faget er ved at øve sig regelmæssigt og så meget som overhovedet muligt. Træning gør mester! Gå ikke videre før du har styr på det fundamentale. Øvelser med fed skrift skal afleveres i Lectio.
 
-
-
-## Undervisningsplan
+## Programmering i Python
 
 Modul Nr       | Kapitel     | Indhold                     | Øvelser     |
 ----------- | ----------- | ----------------------------| ----------- |
@@ -53,7 +47,7 @@ Modul Nr       | Kapitel     | Indhold                     | Øvelser     |
 3 | PY: 6 og 7 | Indbyggede typer og datastrukturer | **7-11**,12-14 |
 4 | PY: 8 og 11 | Løkker og betinget udførsel | **21-25**,26-27|
 5 | PY: 9 | Funktioner | **33** |
-6 |   Øvelse    | WebApps og GUIs i streamlit  | **41-42** |
+6 |   Øvelse    | WebApps og GUIs  | **41-42** |
 7 | PY: 10 | Undtagelser | **32** |
 8 | PY: 11-12 | Operationer på lister |**34-35**, 28|
 9 | PY: 14 | Moduler og pakker | **37** |
