@@ -1443,7 +1443,210 @@ hilsen("Alice")  # Resultat: Hej Alice
 ```
 
 
+# Zip funktionen i Python
+- Den generelle syntaks for zip funktionen er: zip(liste1, liste2, ...)
+- Bruges til at kombinere to eller flere lister.
+- Lave en liste af tupler, liste af lister, liste af sæt eller liste af dictionaries.
+- 
 
+# Zip funktionen med to lister
+```python
+navne = ["Alice", "Bob", "Charlie"]
+alder = [30, 25, 35]
+personer = zip(navne, alder)
+print(list(personer))  # Resultat: [('Alice', 30), ('Bob', 25), ('Charlie', 35)]
+```
+
+# Zip funktionen med tre lister
+```python
+navne = ["Alice", "Bob", "Charlie"]
+alder = [30, 25, 35]
+køn = ["Kvinde", "Mand", "Mand"]
+personer = zip(navne, alder, køn)
+print(list(personer))  # Resultat: [('Alice', 30, 'Kvinde'), ('Bob', 25, 'Mand'), ('Charlie', 35, 'Mand')]
+```
+
+# Zip funktionen med to lister og for-løkke
+```python
+navne = ["Alice", "Bob", "Charlie"]
+alder = [30, 25, 35]
+for navn, alder in zip(navne, alder):
+    print(navn, alder)
+```
+
+# Zip funktionen med to lister og for-løkke og returværdi
+```python
+navne = ["Alice", "Bob", "Charlie"]
+alder = [30, 25, 35]
+personer = zip(navne, alder)
+for person in personer:
+    print(person[0], person[1])
+```
+
+# Enumerate funktionen i Python
+- Enumerate funktionen bruges til at tilføje en tæller til en liste.
+- Enumerate funktionen bruges til at lave en liste af tupler med tæller og element.
+- Enumerate funktionen bruges til at lave en liste af tupler med tæller og element i en for-løkke.
+- Enumerate funktionen bruges til at lave en liste af tupler med tæller og element i en liste.
+- Den generelle syntaks for enumerate funktionen er: enumerate(liste, start=0)
+
+# Enumerate funktionen med en liste
+```python
+navne = ["Alice", "Bob", "Charlie"]
+personer = enumerate(navne)
+print(list(personer))  # Resultat: [(0, 'Alice'), (1, 'Bob'), (2, 'Charlie')]
+```
+
+# Enumerate funktionen med en liste og for-løkke
+```python
+navne = ["Alice", "Bob", "Charlie"]
+for i, navn in enumerate(navne):
+    print(i, navn)
+```
+
+# Enumerate funktionen med en liste og for-løkke og returværdi
+```python
+navne = ["Alice", "Bob", "Charlie"]
+personer = enumerate(navne)
+for person in personer:
+    print(person[0], person[1])
+```
+
+# Enumerate funktionen med en liste og for-løkke og returværdi og startværdi
+```python
+navne = ["Alice", "Bob", "Charlie"]
+personer = enumerate(navne, start=1)
+for person in personer:
+    print(person[0], person[1])
+```
+
+
+
+
+# Højere ordens funktioner i Python
+- Højere ordens funktioner er funktioner der tager en eller flere funktioner som argumenter og/eller returnerer en funktion.   
+- Højere ordens funktioner er en del af funktionel programmering.
+- Højere ordens funktioner bruges til at gøre koden mere generisk og mere genbrugelig.
+- Højere ordens funktioner bruges til at gøre koden mere kort og mere læsbar.
+- Højere ordens funktioner bruges til at gøre koden mere fleksibel og mere testbar.
+
+# Funktioner som argumenter
+```python
+def hilsen(navn):
+    return "Hej " + navn
+def højere_ordens_funktion(funktion, navn):
+    return funktion(navn)
+tekst = højere_ordens_funktion(hilsen, "Alice")
+print(tekst)  # Resultat: Hej Alice
+```
+
+# Indre funktioner med returværdi som funktion
+```python
+def højere_ordens_funktion():
+    def hilsen(navn):
+        return "Hej " + navn
+    return hilsen
+funktion = højere_ordens_funktion()
+tekst = funktion("Alice")
+print(tekst)  # Resultat: Hej Alice
+```
+
+
+# Map funktionen en højere ordens funktion
+- Map funktionen bruges til at anvende en funktion på hvert element i en liste.
+- Map funktionen bruges til at anvende en funktion på hvert element i flere lister.
+- Map funktionen bruges til at anvende en funktion på hvert element i en liste og en anden liste.
+- og meget mere...
+- Den generelle syntaks for map funktionen er: map(funktion, liste)
+
+# Map funktionen med en liste
+```python
+def hilsen(navn):
+    return "Hej " + navn
+navne = ["Alice", "Bob", "Charlie"]
+tekster = map(hilsen, navne)
+print(list(tekster))  # Resultat: ['Hej Alice', 'Hej Bob', 'Hej Charlie']
+```
+
+# Map funktionen med flere lister
+```python
+def hilsen(navn, alder):
+    return "Hej " + navn + ", du er " + str(alder) + " år gammel"
+navne = ["Alice", "Bob", "Charlie"]
+alder = [30, 25, 35]
+tekster = map(hilsen, navne, alder)
+print(list(tekster))  # Resultat: ['Hej Alice, du er 30 år gammel', 'Hej Bob, du er 25 år gammel', 'Hej Charlie, du er 35 år gammel']
+```
+
+# Map funktionen med flere lister og en funktion
+```python
+def hilsen(navn, alder):
+    return "Hej " + navn + ", du er " + str(alder) + " år gammel"
+def højere_ordens_funktion(funktion, liste1, liste2):
+    return map(funktion, liste1, liste2)
+navne = ["Alice", "Bob", "Charlie"]
+alder = [30, 25, 35]
+tekster = højere_ordens_funktion(hilsen, navne, alder)
+print(list(tekster))  # Resultat: ['Hej Alice, du er 30 år gammel', 'Hej Bob, du er 25 år gammel', 'Hej Charlie, du er 35 år gammel']
+```
+
+# Filter funktionen en højere ordens funktion
+- Filter funktionen bruges til at filtrere elementer i en liste.
+- Den generelle syntaks for filter funktionen er: filter(funktion, liste)
+- Funktionen skal returnere sand eller falsk.
+- Filter funktionen returnerer en iterator.
+- Filter funktionen bruges ofte sammen med lambda funktioner, som er anonyme funktioner.
+
+# Filter funktionen med en liste
+```python
+def er_over_18(alder):
+    return alder >= 18
+alder = [30, 15, 25, 40, 10]
+resultat = filter(er_over_18, alder)
+print(list(resultat))  # Resultat: [30, 25, 40]
+```
+
+# Lambda funktioner i Python
+- Lambda funktioner er anonyme funktioner. Dvs. funktioner uden navn.
+- Lambda funktioner bruges til at lave enkle funktioner.
+- Lambda funktioner bruges ofte sammen med højere ordens funktioner.
+- Lambda funktioner bruges ofte sammen med map, filter og sort funktioner.
+- Den generelle syntaks for lambda funktioner er: lambda argumenter: udtryk
+- Lambda funktioner kan have et eller flere argumenter.
+
+# Lambda funktioner med et argument
+```python
+f = lambda x: x + 10
+print(f(5))  # Resultat: 15
+```
+
+# Lambda funktioner med flere argumenter
+```python
+f = lambda x, y: x * y
+print(f(5, 10))  # Resultat: 50
+```
+
+# Lambda funktioner med map funktionen
+```python
+navne = ["Alice", "Bob", "Charlie"]
+tekster = map(lambda navn: "Hej " + navn, navne)
+print(list(tekster))  # Resultat: ['Hej Alice', 'Hej Bob', 'Hej Charlie']
+```
+
+# Lambda funktioner med filter funktionen
+```python
+alder = [30, 15, 25, 40, 10]
+resultat = filter(lambda alder: alder >= 18, alder)
+print(list(resultat))  # Resultat: [30, 25, 40]
+```
+
+# Lambda funktioner med filter funktionen og map funktionen
+```python
+alder = [30, 15, 25, 40, 10]
+resultat = map(lambda alder: alder + 10, filter(lambda alder: alder >= 18, alder))
+print(list(resultat))  # Resultat: [40, 35, 50]
+```
+Her filtreres alderen først og derefter lægges 10 til alderen. Dvs. at alderen tjekkes først om den er over 18 og derefter lægges 10 til alderen.
 
 
 
