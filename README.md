@@ -30,6 +30,9 @@ Foretrækker du at kode lokalt anbefales VS Code og Anaconda:
 - [Visual Studio Code editor ](https://code.visualstudio.com/)
 - [Anaconda](https://www.anaconda.com/products/individual) 
 - [Jupyter-plugin til Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter). 
+- [Python plugin til Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+
+Vi bruger Python 3.8 eller nyere.
 
 # Undervisningsplan
 Herunder en tentativ plan for undervisningen, der opdateres undervejs. Øvelser refererer til numre i øvelsesdokumentet [Øvelser](https://github.com/HenrikSterner/PythonExercises/). 
