@@ -1648,8 +1648,68 @@ print(list(resultat))  # Resultat: [40, 35, 50]
 ```
 Her filtreres alderen først og derefter lægges 10 til alderen. Dvs. at alderen tjekkes først om den er over 18 og derefter lægges 10 til alderen.
 
+# Reduce funktionen i Python
+- Reduce funktionen bruges til at reducere en liste til et enkelt element.
+- Reduce funktionen bruges til at anvende en funktion på hvert element i en liste og akkumulere resultatet.
+- Reduce funktionen bruges til at anvende en funktion på hvert element i en liste og akkumulere resultatet med en startværdi.
+- Reduce funktionen bruges til at anvende en funktion på hvert element i en liste og akkumulere resultatet med en startværdi og en anden funktion.
+- Syntax: reduce(funktion, liste, startværdi)
 
+# Reduce funktionen med en liste
+```python
+from functools import reduce
+def add(x, y):
+    return x + y
+tal = [1, 2, 3, 4, 5]
+resultat = reduce(add, tal)
+print(resultat)  # Resultat: 15
+```
 
+# Reduce funktionen med en liste og startværdi
+```python
+from functools import reduce
+def add(x, y):
+    return x + y
+tal = [1, 2, 3, 4, 5]
+resultat = reduce(add, tal, 10)
+print(resultat)  # Resultat: 25
+```
+
+# Reduce funktionen med en liste og startværdi og en anden funktion
+```python
+from functools import reduce
+def add(x, y):
+    return x + y
+def sub(x, y):
+    return x - y
+tal = [1, 2, 3, 4, 5]
+resultat = reduce(add, tal, 10)
+print(resultat)  # Resultat: 25
+resultat = reduce(sub, tal, 10)
+print(resultat)  # Resultat: -13
+```
+
+# Decorators i Python
+- Decorators bruges til at ændre en funktion uden at ændre dens kode.
+- Decorators bruges til at tilføje funktionalitet til en eksisterende funktion.
+- Decorators bruges til at gøre koden mere generisk og mere genbrugelig.
+- Decorators bruges til at gøre koden mere kort og mere læsbar.
+
+# Decorators med en funktion
+```python
+def dekoration(funktion):
+    def wrapper():
+        print("Før")
+        funktion()
+        print("Efter")
+    return wrapper
+def hilsen():
+    print("Hej verden")
+hilsen = dekoration(hilsen)
+hilsen()
+```
+Resultat: Før Hej verden Efter. 
+Hvad der sker her er at vi laver en funktion der tager en anden funktion som argument og returnerer en ny funktion. Den nye funktion udfører noget før og efter den gamle funktion.
 
 
 
