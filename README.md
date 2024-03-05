@@ -10,13 +10,14 @@ God arbejdslyst.
 Mvh.
 Peter Sterner og Henrik Sterner
 
-# Grundbog og øvelser
+# Grundbog, slides og øvelser
 Vi bruger uddrag af følgende to gratis og opensource bøger af af Jake Vanderplas: 
 1. (PY) [Grundbog: A Whirlwind Tour of Python](https://jakevdp.github.io/WhirlwindTourOfPython/)
 2. (ØP) [Middelsvære Øvelser](https://github.com/HenrikSterner/PythonExercises/)
 3. (ØP2) [Nybegynder Øvelser](https://github.com/HenrikSterner/PythonExercises/blob/main/exercises/easyexercises.ipynb)
 4. (AdvPy) [Videregående Python](https://python-course.eu/advanced-python/)
 5. (Noter) [Noter](https://github.com/HenrikSterner/PythonForDataScience/tree/master/noter)
+6. (Slides) [Slides](https://github.com/HenrikSterner/IntroPython/blob/main/slides/slidespython.pdf)
 
 
 Bogen er gratis, og rummer en række kapitler i jupyter-formatet, som gør det muligt at kombinere tekst og kode. Derudover vil der være uddrag fra andre bøger og internet ressourcer.
