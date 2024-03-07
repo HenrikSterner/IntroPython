@@ -1711,6 +1711,23 @@ hilsen()
 Resultat: Før Hej verden Efter. 
 Hvad der sker her er at vi laver en funktion der tager en anden funktion som argument og returnerer en ny funktion. Den nye funktion udfører noget før og efter den gamle funktion.
 
+# Decorators med en funktion og @
+```python
+def dekoration(funktion):
+    def wrapper():
+        print("Før")
+        funktion()
+        print("Efter")
+    return wrapper
+@dekoration
+def hilsen():
+    print("Hej verden")
+hilsen()
+```
+Resultat: Før Hej verden Efter.
+
+
+
 
 
 
