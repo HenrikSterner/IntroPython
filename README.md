@@ -39,6 +39,7 @@ Vi bruger Python 3.8 eller nyere.
 Herunder en tentativ plan for undervisningen, der opdateres undervejs. Øvelser refererer til numre i øvelsesdokumentet: 
 - (ØP) [Middelsvære Øvelser](https://github.com/HenrikSterner/PythonExercises/blob/main/exercises/exercises.ipynb)
 - (ØP2) [Nybegynder Øvelser](https://github.com/HenrikSterner/PythonExercises/blob/main/exercises/exercises.ipynb). 
+
 Lav øvelserne i den rækkefølge som de står. Lav så mange som overhovedet muligt. Den eneste måde at blive god til faget er ved at øve sig regelmæssigt og så meget som overhovedet muligt. Træning gør mester! Gå ikke videre før du har styr på det fundamentale. Øvelser med fed skrift skal afleveres i Lectio.
 
 
