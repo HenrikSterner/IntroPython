@@ -607,25 +607,25 @@ DEBUG: Something is happening after the function is called.
 - Et klassediagram viser nedarvning, association, aggregering og komposition
 - Et klassediagram viser offentlige og private attributter og metoder
 
-# Et generisk klassediagram
 
-```plantuml
-@startuml
-class Person {
-    -name: str
-    -age: int
-    +__init__(name: str, age: int)
-    +say_hello(): None
-}
-class Student {
-    -name: str
-    -age: int
-    -cprnr: str
-    +__init__(name: str, age: int, cprnr: str)
-    +_get_cpr_nr(): str
-}
-Person <|-- Student
-@enduml
+# Klassediagram
+Vi kan modellere klasser og deres relationer ved brug af et klassediagram:
+```mermaid
+classDiagram
+    class Person {
+        -name: str
+        -age: int
+        +__init__(name: str, age: int)
+        +say_hello(): None
+    }
+    class Student {
+        -name: str
+        -age: int
+        -cprnr: str
+        +__init__(name: str, age: int, cprnr: str)
+        +_get_cpr_nr(): str
+    }
+    Person <|-- Student
 ```
 
 
