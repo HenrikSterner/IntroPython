@@ -1981,7 +1981,7 @@ Her bruger vi map funktionen til at gange hvert element i en liste med 2. lambda
 ---
 
 
-# Højere ordens funktioner i Python
+### Opsummering på højere ordens funktioner i Python
 - map er eksempel på en højere ordens funktion. Dvs. en funktion der tager en anden funktion som argument.
 - Typisk er Højere ordens funktioner  der tager en eller flere funktioner som argumenter og/eller returnerer en funktion.
 - De er en del af funktionel programmering.
@@ -2032,15 +2032,312 @@ def hilsen():
 hilsen()
 ```
 Resultat: Før Hej verden Efter.
+Her bruger vi @ foran funktionen for at tilføje dekorationen til funktionen.
+---
+
+### Multitrådet programmering i Python
+- Multitrådet programmering bruges til at udføre flere opgaver samtidig. Det gør koden mere effektiv og hurtigere.
+- I praksis bruges multitrådet programmering til få multikerneprocessorer til at udføre flere opgaver samtidig.
+- Multitrådet programmering bruges til at udføre opgaver som er I/O-bundne, dvs. opgaver der venter på input/output. Eksempelvis:
+    - Læsning og skrivning af filer
+    - Netværkskommunikation
+    - Brugerinput
+    - osv.
+
+---
+
+### Multitrådet programmering med threading modul
+```python
+import threading
+def hilsen():
+    print("Hej verden")
+tråd = threading.Thread(target=hilsen)
+tråd.start()
+```
+Resultat: Hej verden.
+Her bruger vi threading modul til at lave en tråd. Vi bruger target til at angive funktionen der skal udføres i tråden og start til at starte tråden.
+
+---
+
+### Multitrådet programmering med threading modul og flere tråde
+```python
+import threading
+def hilsen():
+    print("Hej verden")
+tråde = []
+for i in range(3):
+    tråd = threading.Thread(target=hilsen)
+    tråde.append(tråd)
+    tråd.start()
+for tråd in tråde:
+    tråd.join()
+```
+Resultat: Hej verden Hej verden Hej verden.
+Her bruger vi threading modul til at lave flere tråde. Vi bruger target til at angive funktionen der skal udføres i tråden og start til at starte tråden. Vi bruger join til at vente på at tråden er færdig.
+
+---
+
+### Multitrådet programmering med threading modul og argumenter
+```python
+import threading
+def hilsen(navn):
+    print("Hej " + navn)
+tråde = []
+for i in range(3):
+    tråd = threading.Thread(target=hilsen, args=("Alice",))
+    tråde.append(tråd)
+    tråd.start()
+for tråd in tråde:
+    tråd.join()
+```
+Resultat: Hej Alice Hej Alice Hej Alice.
+
+---
+
+### Vigtige ting at huske på ved multitrådet programmering
+- t.start() starter tråden.
+- t.join() venter på at tråden er færdig.
+- t.is_alive() returnerer True hvis tråden er i gang ellers False.
+- t.daemon = True gør tråden til en daemon tråd. Dvs. en baggrunds tråd der stopper når hovedtråden stopper.
+- threading.active_count() returnerer antallet af aktive tråde.
+- threading.enumerate() returnerer en liste af alle aktive tråde.
+- threading.current_thread() returnerer den nuværende tråd.
+
+---
+
+### Printe tilfældige tal i Python med brug af tråde
+- Betragt følgende eksempel på printe tilfældige tal i Python med brug af tråde.
+- Når et tal er blevet printet, så fjernes det fra listen og et nyt tal bliver printet.
+- Hver tråd får tildelt et tilfældigt tal fra listen og printer tallet.
+- Hvis listen er tom, så stopper tråden.
+
+---
+
+### Kodeeksempel på printe tilfældige tal i Python med brug af tråde - del I
+```python
+import threading
+import random
+
+
+n=10000
+numberOfThreads = 10
+numbers = []
+for i in range(1, n):
+    numbers.append(i)
+
+def print_numbers():
+    while len(numbers) > 0:
+        # take a random number from the list
+        number = numbers.pop(random.randint(0, len(numbers)-1))
+        print(number)
+```
+---
+
+### Kodeeksempel på printe tilfældige tal i Python med brug af tråde - del II
+```python
+
+threads = []
+for i in range(numberOfThreads):
+    thread = threading.Thread(target=print_numbers)
+    threads.append(thread)
+    thread.start()
+
+for thread in threads:
+    thread.join()
+```
+
+---
+
+### Faktorisering af et tal i Python med tråde
+- Betragt følgende eksempel på faktorisering af et tal n tråde, hvor n er tallet der skal faktoriseres og k er antallet af tråde der skal bruges til at faktorisere tallet.
+- Hver tråd får tildelt et interval af tal fra 2 til n//k. Hvis tallet er deleligt med et tal i intervallet, så er tallet ikke et primtal. 
+- Hvis tallet ikke er deleligt med et tal i intervallet, så er tallet et primtal.
+
+---
+
+### Faktorisering af et tal i Python med tråde del 1
+
+```python
+import random
+import threading
+
+n = 664007
+numberOfThreads = 10
+numbers = list(range(1, n + 1))
+number = 1
+lock = threading.Lock()
 
 ```
 
 ---
 
+### Faktorisering af et tal i Python med tråde del 2
+
+```python
+def check_divisors():
+    global number
+    while True:
+        lock.acquire()
+        if not numbers:
+            lock.release()
+            break
+        number = numbers.pop(random.randint(0, len(numbers) - 1))
+        lock.release()
+
+        if n % number == 0:
+            print("Divisor found: ", number)
+            print("Found by thread: ", threading.current_thread().name)
+            break
+
+```
 
 
+### Regulære udtryk i Python
+Et regulært udtryk i programmering kan betragtes som en sekvens af tegn, der danner et søgemønster. Regulære udtryk bruges til at søge efter et bestemt mønster i en tekst. De kan også bruges til at finde og erstatte dele af en tekst eller validere eller udtrække information fra en tekst.
+Dette kan også opnås ved hjælp af brug af løkker og betingetudførsel, men regulære udtryk er en mere effektiv og elegant løsning.
 
+### Regulære udtryk i Python med re modul
+I Python kan vi bruge re modul til at arbejde med regulære udtryk. re modul giver os mulighed for at bruge regulære udtryk i Python. re modul indeholder en række funktioner, der gør det muligt at arbejde med regulære udtryk.
 
+### Vigtigste funktioner i re modul
+- re.match() bruges til at søge efter et mønster i starten af en tekst.
+- re.search() bruges til at søge efter et mønster i hele teksten.
+- re.findall() bruges til at finde alle forekomster af et mønster i en tekst.
+- re.split() bruges til at opdele en tekst i en liste ved et bestemt mønster.
+- re.sub() bruges til at erstatte et mønster i en tekst.
+
+### Regulære udtryk i Python med re.match()
+```python
+import re
+tekst = "Hej verden"
+mønster = "Hej"
+resultat = re.match(mønster, tekst)
+if resultat:
+    print("Mønster fundet")
+else:
+    print("Mønster ikke fundet")
+```
+
+### Regulære udtryk i Python med re.search()
+```python
+import re
+tekst = "Hej verden"
+mønster = "verden"
+resultat = re.search(mønster, tekst)
+if resultat:
+    print("Mønster fundet")
+else:
+    print("Mønster ikke fundet")
+```
+
+### Regulære udtryk i Python med re.findall()
+```python
+import re
+tekst = "Hej verden, hej alle"
+
+mønster = "hej"
+resultat = re.findall(mønster, tekst)
+print(resultat)
+```
+
+### Regulære udtryk i Python med re.split()
+```python
+import re
+tekst = "Hej verden, hej alle"
+
+mønster = ","
+resultat = re.split(mønster, tekst)
+print(resultat)
+```
+
+### Regulære udtryk i Python med re.sub()
+```python
+import re
+tekst = "Hej verden, hej alle"
+
+mønster = "hej"
+erstatning = "Hej"
+resultat = re.sub(mønster, erstatning, tekst)
+
+print(resultat)
+```
+
+### Regulære udtryk i Python med metakarakterer
+- Metakarakterer er specielle tegn, der bruges til at beskrive et søgemønster.
+- Metakarakterer bruges til at beskrive et søgemønster i en tekst.
+- Metakarakterer bruges til at søge efter et bestemt mønster i en tekst.
+- Metakarakterer bruges til at finde og erstatte dele af en tekst.
+
+### Metakarakterer i regulære udtryk
+- . bruges til at finde et vilkårligt tegn.
+- ^ bruges til at finde et mønster i starten af en tekst.
+- $ bruges til at finde et mønster i slutningen af en tekst.
+- * bruges til at finde nul eller flere forekomster af et tegn.
+- + bruges til at finde en eller flere forekomster af et tegn.
+- ? bruges til at finde nul eller en forekomst af et tegn.
+
+### Metakarakterer i regulære udtryk med .
+```python
+import re
+tekst = "Hej verden"
+
+mønster = "Hej ."
+resultat = re.search(mønster, tekst)
+if resultat:
+    print("Mønster fundet")
+else:
+    print("Mønster ikke fundet")
+```
+
+### Metakarakterer i regulære udtryk med ^
+```python
+import re
+tekst = "Hej verden"
+
+mønster = "^Hej"
+resultat = re.search(mønster, tekst)
+if resultat:
+    print("Mønster fundet")
+else:
+    print("Mønster ikke fundet")
+```
+
+### Metakarakterer i regulære udtryk med $
+```python
+import re
+tekst = "Hej verden"
+
+mønster = "verden$"
+resultat = re.search(mønster, tekst)
+if resultat:
+    print("Mønster fundet")
+else:
+    print("Mønster ikke fundet")
+```
+
+### Metakarakterer i regulære udtryk med *
+```python
+import re
+
+tekst = "Hej verden"
+
+mønster = "Hej .*"
+resultat = re.search(mønster, tekst)
+if resultat:
+    print("Mønster fundet")
+else:
+    print("Mønster ikke fundet")
+```
+
+### Verificering af e-mail med regulære udtryk
+```python
+import re
+
+def er_email(email):
+    mønster = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+    return re.match(mønster, email)
+```
+Her bruger vi re.match() til at verificere om en e-mail er gyldig. Vi bruger metakarakterer til at beskrive et søgemønster for en e-mail.
 
 
 
