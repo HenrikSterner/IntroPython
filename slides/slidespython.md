@@ -2217,6 +2217,7 @@ if resultat:
 else:
     print("Mønster ikke fundet")
 ```
+I dette eksempel bruger vi re.match() til at søge efter et mønster i starten af en tekst. 
 
 ### Regulære udtryk i Python med re.search()
 ```python
@@ -2229,6 +2230,7 @@ if resultat:
 else:
     print("Mønster ikke fundet")
 ```
+I dette eksempel bruger vi re.search() til at søge efter et mønster i hele teksten. 
 
 ### Regulære udtryk i Python med re.findall()
 ```python
@@ -2239,6 +2241,7 @@ mønster = "hej"
 resultat = re.findall(mønster, tekst)
 print(resultat)
 ```
+
 
 ### Regulære udtryk i Python med re.split()
 ```python
@@ -2261,6 +2264,8 @@ resultat = re.sub(mønster, erstatning, tekst)
 
 print(resultat)
 ```
+
+
 
 ### Regulære udtryk i Python med metakarakterer
 - Metakarakterer er specielle tegn, der bruges til at beskrive et søgemønster.
@@ -2336,8 +2341,262 @@ import re
 def er_email(email):
     mønster = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
     return re.match(mønster, email)
+
+email = "test.dk"
+if er_email(email):
+    print("E-mail er gyldig")
+else:
+    print("E-mail er ugyldig")
 ```
 Her bruger vi re.match() til at verificere om en e-mail er gyldig. Vi bruger metakarakterer til at beskrive et søgemønster for en e-mail.
+
+### Forklaring af mønsteret "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+
+Lads os kigge nærmere på mønsteret "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$":
+- ^ bruges til at finde et mønster i starten af en tekst.
+- [a-zA-Z0-9_.+-] bruges til at finde et vilkårligt tegn i en tekst.
+- + bruges til at finde en eller flere forekomster af et tegn.
+- @ bruges til at finde tegnet @.
+- \. bruges til at finde punktum.
+- $ bruges til at finde et mønster i slutningen af en tekst.
+
+### Look ahead med regulære udtryk i Python
+Med begrebet "look ahead" kan vi undersøge om et regulært udtryk matcher en streng på en bestemt måde, uden at inkludere det i det endelige match. 
+Dette kan være nyttigt, hvis vi f.eks. vil finde alle tal, der er efterfulgt af et bogstav eller et andet tal.
+
+I Python kan vi bruge `(?=...)` for at lave et "look ahead". Her er et eksempel, hvor vi vil finde alle tal, der er efterfulgt af et bogstav eller et andet tal:
+
+```python
+import re
+
+tekst = "123hej 456med 789dig"
+resultat = re.findall(r"\d(?=\D|\d)", tekst)
+print(resultat)
+```
+
+I eksemplet vil `re.findall` finde alle tal, der er efterfulgt af et bogstav eller et andet tal i strengen `tekst`. "\D" matcher et bogstav, mens "\d" matcher et tal. "|\d" betyder "eller et tal".
+Dette vil give os følgende output:
+
+```python
+['3', '6']
+```
+
+Her er det kun tallene 3 og 6, der er efterfulgt af et bogstav eller et andet tal, der bliver fundet. Tallene 1, 2, 4, 5, 7, 8 og 9 bliver ikke fundet, da de ikke er efterfulgt af et bogstav eller et andet tal.
+
+Herunder et andet eksempel, hvor vi vil finde alle tal, der er efterfulgt af et mellemrum:
+
+```python
+import re
+
+tekst = "123 456 789"
+resultat = re.findall(r"\d(?= )", tekst)
+print(resultat)
+```
+
+I dette eksempel vil `re.findall` finde alle tal, der er efterfulgt af et mellemrum i strengen `tekst`. Dette vil give os følgende output:
+
+```python
+['3', '6']
+```
+
+### Opgave til look ahead
+Prøv at lave et regulært udtryk, der finder alle tal, der er efterfulgt af et punktum.
+
+### Opgave til look ahead
+Prøv at lave et regulært udtryk, der finder alle tal, der er efterfulgt af et udråbstegn.
+
+### Opgave til look ahead
+Prøv at lave et regulært udtryk, der finder alle ord på 3 bogstaver, der er efterfulgt af et mellemrum.
+
+### Look behind med regulære udtryk i Python
+På samme måde som "look ahead" kan vi også bruge "look behind" til at undersøge, om et regulært udtryk matcher en streng på en bestemt måde, uden at inkludere det i det endelige match.
+
+I Python kan vi bruge `(?<=...)` for at lave et "look behind". Her er et eksempel, hvor vi vil finde alle tal, der er foran et bogstav eller et andet tal:
+
+```python
+import re
+
+tekst = "aba1cad2aba3"
+resultat = re.findall(r"(?<=\D|\d)\d", tekst)
+print(resultat)
+```
+
+I eksemplet vil `re.findall` finde alle tal, der er foran et bogstav eller et andet tal i strengen `tekst`. "\D" matcher et bogstav, mens "\d" matcher et tal. "|\d" betyder "eller et tal".
+Dette vil give os følgende output:
+
+```python
+['1', '2']
+```
+
+Her er det kun tallene 1 og 2, der er foran et bogstav eller et andet tal, der bliver fundet. Tallene 3 bliver ikke fundet, da det ikke er foran et bogstav eller et andet tal.
+
+
+### Opgave: Password styrke tjekker med regulære udtryk i Python
+Vi kan også bruge regulære udtryk til at tjekke, om et password er stærkt nok. Her er et eksempel på, hvordan vi kan gøre det:
+
+```python
+import re
+
+def tjek_password(password):
+    if re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$", password):
+        print("Passwordet er stærkt")
+    else:
+        print("Passwordet er ikke stærkt")
+
+tjek_password("Hej123@")
+tjek_password("hej123")
+```
+
+I eksemplet bruger vi `re.match` til at tjekke, om passwordet opfylder følgende krav:
+- Minimum 8 tegn
+- Mindst ét stort bogstav
+- Mindst ét lille bogstav
+- Mindst ét tal
+- Mindst ét specialtegn (@, $, !, %, *, ?, &)
+
+Hvis passwordet opfylder alle kravene, vil vi få følgende output:
+
+```python
+Passwordet er stærkt
+```
+
+Andre eksempler på krav til et stærkt password kan være:
+- Maksimum 16 tegn
+- Maksimum 2 ens tegn i træk
+- Maksimum 2 tal i træk
+- Maksimum 2 specialtegn i træk
+
+Prøv at lave dit eget regulære udtryk til at tjekke, om et password er stærkt nok.
+```
+
+### Opgave: Password med gamle krav 
+I mange password-regler er der i dag krav om, at passwordet ikke må minde for meget om tidligere password. Hvorfor er det mon en god idé? Prøv at forklare det.
+Lad os antage, at vi har en liste over tidligere password, som vi gerne vil tjekke det nye password imod. Hvordan kan vi bruge regulære udtryk til at tjekke, om det nye password minder for meget om et af de gamle password?
+Herunder er et simpelt eksempel på, hvordan vi kan gøre det:
+
+```python
+import re
+
+def tjek_gamle_password(nyt_password, gamle_password):
+    for password in gamle_password:
+        if re.search(rf"{password}", nyt_password):
+            print(f"Passwordet minder for meget om det gamle password: {password}")
+            return
+    print("Passwordet er godkendt")
+
+gamle_password = ["Hej123", "123Hej", "HejHej123"]
+tjek_gamle_password("Hej1234", gamle_password)
+
+```
+
+Prøv at lave dit eget regulære udtryk til at tjekke, om det nye password minder for meget om et af de gamle password.
+
+
+
+### Metakarakterer i regulære udtryk med .
+I regulære udtryk bruges punktummet "." til at matche ethvert tegn undtagen et linjeskift. Her er et eksempel på, hvordan vi kan bruge punktummet til at finde et mønster i en streng:
+```python
+import re
+tekst = "Hej verden"
+
+mønster = "Hej ."
+resultat = re.search(mønster, tekst)
+if resultat:
+    print("Mønster fundet")
+else:
+    print("Mønster ikke fundet")
+```
+Vi bruger `re.search` til at finde mønsteret "Hej ." i strengen `tekst`. Her matcher punktummet "." ethvert tegn, så længe det er efterfulgt af et mellemrum. 
+
+
+### Metakarakterer i regulære udtryk med ^
+I regulære udtryk bruges metakarakteret "^" til at matche starten af en streng. Her er et eksempel på, hvordan vi kan bruge "^" til at finde et mønster i starten af en streng:
+
+```python
+import re
+tekst = "Hej verden"
+
+mønster = "^Hej"
+resultat = re.search(mønster, tekst)
+if resultat:
+    print("Mønster fundet")
+else:
+    print("Mønster ikke fundet")
+```
+Her bruger vi `re.search` til at finde mønsteret "^Hej" i strengen `tekst`. 
+
+### Metakarakterer i regulære udtryk med $
+I regulære udtryk bruges metakarakteret "$" til at matche slutningen af en streng. Her er et eksempel på, hvordan vi kan bruge "$" til at finde et mønster i slutningen af en streng:
+```python
+import re
+tekst = "Hej verden"
+
+mønster = "verden$"
+resultat = re.search(mønster, tekst)
+if resultat:
+    print("Mønster fundet")
+else:
+    print("Mønster ikke fundet")
+```
+Her bruger vi `re.search` til at finde mønsteret "verden$" i strengen `tekst`.
+
+
+### Metakarakterer i regulære udtryk med *
+I regulære udtryk bruges metakarakteret "*" til at matche 0 eller flere forekomster af det foregående tegn. Her er et eksempel på, hvordan vi kan bruge "*" til at finde et mønster i en streng:
+
+```python
+import re
+
+tekst = "Hej verden"
+
+mønster = "Hej .*"
+resultat = re.search(mønster, tekst)
+if resultat:
+    print("Mønster fundet")
+else:
+    print("Mønster ikke fundet")
+```
+
+Her bruger vi `re.search` til at finde mønsteret "Hej .*" i strengen `tekst`. Her matcher "*" 0 eller flere forekomster af ethvert tegn, så længe det er efterfulgt af et mellemrum.
+
+### Metakarakterer i regulære udtryk med +
+I regulære udtryk bruges metakarakteret "+" til at matche 1 eller flere forekomster af det foregående tegn. Her er et eksempel på, hvordan vi kan bruge "+" til at finde et mønster i en streng:
+
+```python
+import re
+
+tekst = "Hej verden"
+
+mønster = "Hej .+"
+resultat = re.search(mønster, tekst)
+if resultat:
+    print("Mønster fundet")
+else:
+    print("Mønster ikke fundet")
+```
+
+Her bruger vi `re.search` til at finde mønsteret "Hej .+" i strengen `tekst`. Her matcher "+" 1 eller flere forekomster af ethvert tegn, så længe det er efterfulgt af et mellemrum.
+
+### Metakarakterer i regulære udtryk med ?
+I regulære udtryk bruges metakarakteret "?" til at matche 0 eller 1 forekomst af det foregående tegn. Her er et eksempel på, hvordan vi kan bruge "?" til at finde et mønster i en streng:
+
+```python
+import re
+
+tekst = "Hej verden"
+
+mønster = "Hej .?"
+resultat = re.search(mønster, tekst)
+if resultat:
+    print("Mønster fundet")
+else:
+    print("Mønster ikke fundet")
+```
+
+Her bruger vi `re.search` til at finde mønsteret "Hej .?" i strengen `tekst`. Her matcher "?" 0 eller 1 forekomst af ethvert tegn, så længe det er efterfulgt af et mellemrum.
+
+
+
 
 
 
