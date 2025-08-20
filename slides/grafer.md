@@ -166,9 +166,18 @@ Visualiser grafen fra opgaven med supermetroen. Tilføj passende vægte til kant
 
 Forestil dig, at du har en graf, der repræsenterer et vejnetværk, og du gerne vil finde den korteste vej fra et sted (en startknude) til et andet sted (en slutknude). Vejen kan repræsenteres som en sekvens af knuder, der er forbundet med kanter og hver kant har en længde. Formålet er at finde den korteste vej fra startknuden til slutknuden. 
 
-En af de mest almen kendte algoritmer til at finde den korteste vej i en graf er Dijkstra's algoritme opkaldt efter den hollandske datalog, Edsger W. Dijkstra. Algoritmen fungerer ved at opbygge en korteste vej træ, hvor vi starter med startknuden og tilføjer den næste knude med den korteste vej til startknuden. Dette gentages indtil alle knuder er besøgt.
+En af de mest almen kendte algoritmer til at finde den korteste vej i en graf er Dijkstra's algoritme opkaldt efter den hollandske datalog, Edsger W. Dijkstra. Algoritmen fungerer ved at opbygge en korteste vej træ, hvor vi starter med startknuden og tilføjer den næste knude med den korteste vej til startknuden. Dette gentages indtil alle knuder er besøgt. Herunder en prosakode beskrivelse af Dijkstra's algoritme:
 
-Herunder en Python-implementering af Dijkstra's algoritme:
+1. Initialiser en liste `dist` med afstande fra startknuden til alle andre knuder. Startknuden har afstand 0, og alle andre knuder har afstand uendelig.
+2. Initialiser en prioritetskø `pq` med startknuden og dens afstand 0.
+3. Gentag indtil `pq` er tom:
+    1. Fjern den knude `u` med den korteste afstand fra `pq`.
+    2. For hver nabo `v` til `u`:
+        1. Hvis afstanden fra startknuden til `u` plus vægten af kanten fra `u` til `v` er mindre end afstanden fra startknuden til `v`, så opdater afstanden fra startknuden til `v` og tilføj `v` til `pq`.
+
+Ved afslutningen af algoritmen vil `dist` indeholde den korteste vej fra startknuden til alle andre knuder. En prioritetkø bruges til at vælge den knude med den korteste afstand fra startknuden. En prioritetskø er en datastruktur, der understøtter to operationer: `heappush` og `heappop`. `heappush` tilføjer et element til køen, og `heappop` fjerner og returnerer det mindste element fra køen. En prioritetskø er kendetegnet ved, at det mindste element altid er det første element i køen.
+
+Herunder en Python-implementering af Dijkstra's algoritme, hvor vi bruger heapq biblioteket til at implementere prioritetskøen:
 
 ```python
 import heapq
@@ -178,7 +187,6 @@ def dijkstra(graph, start):
     dist = [float('inf')] * n
     dist[start] = 0
     pq = [(0, start)]
-    
     while pq:
         d, u = heapq.heappop(pq)
         if d > dist[u]:
@@ -187,23 +195,30 @@ def dijkstra(graph, start):
             if dist[u] + w < dist[v]:
                 dist[v] = dist[u] + w
                 heapq.heappush(pq, (dist[v], v))
-    
     return dist
+```
 
+Resultatet printes som en liste af afstande fra startknuden til alle andre knuder. 
+
+Lad os prøve at finde den korteste vej fra København til Stockholm i supermetroen:
+
+```python
 graph = {
-    0: [(1, 1), (2, 4)],
-    1: [(0, 1), (2, 2), (3, 5)],
-    2: [(0, 4), (1, 2), (3, 1)],
-    3: [(1, 5), (2, 1)]
+    0: [(1, 1)],
+    1: [(0, 1), (2, 1), (3, 1)],
+    2: [(1, 1)],
+    3: [(1, 1)]
 }
+
+# visualisering af grafen
+G = nx.Graph(graph)
+nx.draw(G, with_labels=True)
+plt.show()
 
 dist = dijkstra(graph, 0)
 print(dist)
 ```
 
-Resultatet printes som en liste af afstande fra startknuden til alle andre knuder:
 
-```
-[0, 1, 3, 4]
-```
+
 

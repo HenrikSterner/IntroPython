@@ -55,8 +55,6 @@ Eksempelvis kan man forestille sig et system, som skal understøtte flere sprog.
 
 Typisk bruges automatiseret testning derfor når testning skal gentages ofte, og at det er kedeligt, svært og tidskrævende at gøre manuelt, men også når testningen involverer en kritisk del af systemet. Kritiske systemer kan være alt fra sundhedsplatforme, banksystemer til systemer, der håndterer hardware eller robotter. Et eksempel på hvor man i den grad kunne have gjort brug af automatiseret test var NASAs og firmaet Lockheed Martins satelit, som blev sendt afsted i 1998 for at gå i kredsløb omkring Mars. Den kostede flere milliarder at få sendt afsted og over et år i rejsetid før satelitten etablerede kredsløbet omkring Mars. Få minutter efter bragede satelitten ind i Mars. Det viste sig efterfølgende, at fejlen lå i, at to af systemerne udviklet af hhv Nasa og Lockheed Martin brugte forskellige afsandsmetrikker.
 
-
-
 ## Assertions: En simpel test
 
 En assertion er en simpel test, der tjekker om en betingelse er sand. Hvis betingelsen er falsk, vil programmet stoppe og give en AssertionError.
@@ -85,14 +83,58 @@ assert add(1, 2) == 4
 Vi kan også indkapsle vores assertions i en funktion, så vi kan teste flere ting på en gang.
 
 ```python
-def test_add():
+def test_specific_values_add():
     assert add(1, 2) == 3
     assert add(1, 2) == 4
 
-test_add()
+test_specific_values_add()
+```
+Vi kan også bruge en løkke til at teste mange forskellige input på en gang:
+
+```python
+def test_random_values_add():
+    for i in range(100):
+        a = random.randint(0, 100)
+        b = random.randint(0, 100)
+        assert add(a, b) == a + b
+
+test_random_values_add()
 ```
 
-Vi kan sågar lave en test, der tester om en exception bliver kastet.
+Ved at bruge løkker og en liste af tests, kan vi teste flere funktioner på en gang.
+
+```python
+def test_all():
+    tests = [test_specific_values_add, test_random_values_add]
+    for test in tests:
+        test()
+
+test_all()
+```
+
+Bemærk at vi ikke får nogen output, hvis alle tests er succesfulde. Hvis en test fejler, vil vi få en AssertionError. 
+
+Vi skal i i følgende afsnit se på hvorledes man håndtere fejl i Python ved brug af exceptions/undtagelser.
+
+### Opgaver til assertions
+
+1. Skriv en funktion `multiply(a, b)`, der tager to tal som input og returnerer produktet af de to tal. Test funktionen med assertions. Undersøg hvad der sker, hvis du forsøger at multiplicere to strings og tag højde for det med en exception.
+2. Skriv en funktion `subtract(a, b)`, der tager to tal som input og returnerer differensen af de to tal. Test funktionen med assertions.
+3. Skriv en funktion `power(a, b)`, der tager to tal som input og returnerer a opløftet i b. Test funktionen med assertions.
+4. Skriv en funktion `factorial(n)`, der tager et tal som input og returnerer n!. Test funktionen med assertions. Tag højde for at n kan være negativ og returner en passende exception.
+5. Skriv en funktion der summer alle tal i en liste. Test funktionen med assertions. Undersøg hvad der sker, hvis listen indeholder strings og tag højde for det med en exception.
+6. Skriv en funktion der tager et naturtal n som input og returnerer det n'te Fibonacci-tal. Test funktionen med assertions.
+7. Skriv en funktion der tager en liste som input og returnerer det største tal i listen. Test funktionen med assertions.
+8. Skriv en funktion der undersøger om en liste er sorteret. Test funktionen med assertions.
+9. Skriv en funktion der tager en liste som input og returnerer en ny liste med de unikke elementer. Test funktionen med assertions.
+10. Skriv en funktion der tager en liste som input og returnerer en ny liste med de elementer der optræder mere end én gang. Test funktionen med assertions. Undersøg hvad der sker, hvis listen indeholder strings og tag højde for det med en exception.
+
+
+## Håndtering af exceptions/undtagelser
+
+Ofte kan vi støde på fejl i vores kode, som vi ikke kan forudse. De kan opstå eksempelvis når brugeren indtaster en ugyldig værdi, når vi forsøger at tilgå et element i en liste, der ikke eksisterer, eller når vi forsøger at dividere med 0.
+
+I Python kan vi håndtere disse fejl ved at bruge exceptions/undtagelser. En exception er en fejl, der opstår under kørslen af programmet. Når en exception opstår, vil programmet stoppe og give en fejlbesked.
 
 ```python
 def divide(a, b):
@@ -100,11 +142,6 @@ def divide(a, b):
         raise ZeroDivisionError("division by zero")
     return a / b
 
-def test_divide():
-    assert divide(1, 2) == 0.5
-    assert divide(1, 0) == 0
-
-test_divide()
 ```
 
 Her vil testen fejle, fordi vi forventer at der bliver kastet en exception. Der findes en lang række forskellige exceptions, som vi kan teste for. Herunder en liste over de mest almindelige exceptions:
@@ -131,38 +168,39 @@ def test_divide():
 
 Her tester vi om der bliver kastet en `ZeroDivisionError`, når vi forsøger at dividere med 0. Hvis der ikke bliver kastet en exception, vil testen fejle.
 
-
-Ved at bruge løkker og en liste af tests, kan vi teste flere funktioner på en gang.
+Den generelle struktur for en try og except blok er som følger:
 
 ```python
-def test_all():
-    tests = [test_add, test_divide]
-    for test in tests:
-        test()
-
-test_all()
-
+try:
+    statements # Køres som det første
+except navn1:
+    statements # Køres hvis navn1 exception bliver kastet 
+except (navn2, navn3):
+    statements # Køres hvis navn2 eller navn3 exception bliver kastet
+except navn3 as var:
+    statements # Køres hvis navn3 exception bliver kastet og gemmer exception i var
+except:
+    statements # Køres for alle andre exceptions på nær de ovenstående
+else:
+    statements # Køres hvis der ikke bliver kastet en exception
+finally:
+    statements # Køres uanset om der bliver kastet en exception eller ej
 ```
 
-Bemærk at vi ikke får nogen output, hvis alle tests er succesfulde. Hvis en test fejler, vil vi få en AssertionError. 
+Man kan overveje at bruge `finally` blokken til at rydde op efter sig, f.eks. lukke filer eller forbindelser. Nogle vil måske undre sig over, hvorvidt else og finally blokkene tjener samme formål. Det gør de ikke. Else blokken køres kun, hvis der ikke bliver kastet en exception, mens finally blokken køres uanset om der bliver kastet en exception eller ej.
 
 
+### Opgaver til exceptions
 
-### Opgaver til assertions
-
-1. Skriv en funktion `multiply(a, b)`, der tager to tal som input og returnerer produktet af de to tal. Test funktionen med assertions. Undersøg hvad der sker, hvis du forsøger at multiplicere to strings og tag højde for det med en exception.
-2. Skriv en funktion `subtract(a, b)`, der tager to tal som input og returnerer differensen af de to tal. Test funktionen med assertions.
-3. Skriv en funktion `power(a, b)`, der tager to tal som input og returnerer a opløftet i b. Test funktionen med assertions.
-4. Skriv en funktion `factorial(n)`, der tager et tal som input og returnerer n!. Test funktionen med assertions. Tag højde for at n kan være negativ og returner en passende exception.
-5. Skriv en funktion der summer alle tal i en liste. Test funktionen med assertions. Undersøg hvad der sker, hvis listen indeholder strings og tag højde for det med en exception.
-6. Skriv en funktion der tager et naturtal n som input og returnerer det n'te Fibonacci-tal. Test funktionen med assertions.
-7. Skriv en funktion der tager en liste som input og returnerer det største tal i listen. Test funktionen med assertions.
-8. Skriv en funktion der undersøger om en liste er sorteret. Test funktionen med assertions.
-9. Skriv en funktion der tager en liste som input og returnerer en ny liste med de unikke elementer. Test funktionen med assertions.
-10. Skriv en funktion der tager en liste som input og returnerer en ny liste med de elementer der optræder mere end én gang. Test funktionen med assertions. Undersøg hvad der sker, hvis listen indeholder strings og tag højde for det med en exception.
+1. Skriv en funktion `divide(a, b)`, der tager to tal som input og returnerer kvotienten af de to tal. Hvis b er 0, skal funktionen kaste en ZeroDivisionError. Test funktionen med exceptions.
+2. Skriv en login-funktion, der tager et brugernavn og et password som input og returnerer True, hvis brugernavn og password er korrekt, og False, hvis brugernavn og password er forkert. Funktionen skal kaste en ValueError, hvis brugernavn og password er tomme. Test funktionen med exceptions.
+3. Skriv en funktion der bruges til at beregne BMI. Funktionen skal tage to tal som input, vægt og højde, og returnere BMI. Funktionen skal kaste en ValueError, hvis vægt eller højde er negativ. Test funktionen med exceptions.
+4. Skriv en funktion, der kaster en TypeError, hvis inputtet ikke er en liste. Test funktionen med exceptions.
+5. Skriv en funktion, der kaster en IndexError, hvis vi forsøger at tilgå et element i en liste, der ikke eksisterer. Test funktionen med exceptions.
+6. Skriv en funktion, der kaster en KeyError, hvis vi forsøger at tilgå en nøgle i et dictionary, der ikke eksisterer. Test funktionen med exceptions.
+7. Skriv en funktion, der kaster en AssertionError, hvis en assertion fejler. Test funktionen med exceptions.
 
 ## Unittests i Python
-
 
 En unittest er en test, der er skrevet i Python, som tester om en funktion virker som den skal. En unittest er en del af Python standardbibliotek, og vi kan derfor bruge den uden at skulle installere noget. Fordelene ved unittests er, at de er nemme at skrive, og at de er nemme at køre. Ulempen er, at de kan være svære at læse, og at de kan være svære at vedligeholde. 
 
@@ -182,11 +220,9 @@ class TestStringMethods(unittest.TestCase):
 
 I denne klasse laver vi en række metoder, der starter med test_. Disse metoder er de tests, der skal køres. I disse metoder bruger vi assert metoden til at teste om en funktion virker som den skal. Hvis assert metoden fejler, så vil testen fejle.
 
-
 ## Eksempel på unittest: En funktion, der lægger to tal sammen
 
 Vi starter med et relativt simpelt eksempel. Vi vil lave en funktion, der lægger to tal sammen. Vi vil teste om funktionen virker som den skal ved at lave en unittest:
-
 
 ```python
 import unittest
@@ -202,7 +238,6 @@ class TestAdd(unittest.TestCase):
         
 ```
 
-
 Her ser vi, at vi har lavet en klasse, der nedarver fra unittest.TestCase. I denne klasse har vi lavet en metode, der starter med test_. I denne metode bruger vi assertEqual metoden til at teste om funktionen add virker som den skal. Hvis assertEqual metoden fejler, så vil testen fejle.
 
 Bemærk assertEqual metoden. Den tager to argumenter. Det første argument er det forventede resultat, og det andet argument er det faktiske resultat. Hvis de to argumenter er ens, så vil testen lykkes. Hvis de to argumenter ikke er ens, så vil testen fejle.
@@ -212,6 +247,7 @@ Vi kan køre testen i jupyter ved at skrive:
 ```python
 unittest.main(argv=[''], exit=False)
 ```
+
 unittest.main() metoden kører alle tests i klassen. argv=[''] argumentet fortæller unittest.main() metoden, at vi ikke vil have nogen argumenter. exit=False argumentet fortæller unittest.main() metoden, at vi ikke vil have unittest.main() metoden til at afslutte programmet.
 
 Vi kan også køre testen i terminalen ved at skrive:
@@ -221,9 +257,6 @@ python -m unittest test_add.py
 ```
 
 Herunder prøver vi at køre testen i jupyter:
-
-
-
 
 ```python
 unittest.main(argv=[''], exit=False)
@@ -246,10 +279,6 @@ unittest.main(argv=[''], exit=False)
 ## Eksempel på unittest: Tælle alle ord i en tekst
 
 Vi vil nu lave en lidt mere kompleks test. Vi vil lave en funktion, der finder de unikke ord i en tekst, og tæller hvor mange gange hvert ord optræder. Vi vil teste om funktionen virker som den skal ved at lave en unittest:
-
-
-
-
 
 ```python
 import unittest
@@ -291,7 +320,6 @@ unittest.main(argv=[''], exit=False)
     <unittest.main.TestProgram at 0x1e4c6fc65d0>
 
 
-
 ## Opgaver til unittests
 1. Skriv en unittest til funktionen `multiply(a, b)`, der tager to tal som input og returnerer produktet af de to tal.
 2. Skriv en funktion der afgør om et tal er et primtal. Skriv en unittest til funktionen.
@@ -324,6 +352,7 @@ def add(a, b):
     """
     return a + b
 ```
+
 Når vi har skrevet en docstring, kan vi bruge doctests til at teste om funktionen virker som den skal. En doctest er en test, der er skrevet i docstrings-formatet:
 
 ```python
@@ -405,8 +434,8 @@ if __name__ == "__main__":
     doctest.testmod()
 ```
 
-
 ## Opgaver til doctests
+
 Skriv docstrings og doctests til følgende funktioner:
 1. En funktion der tager en liste som input og returnerer summen af alle tal
 2. En funktion der afgør om størrelsen af en liste er et lige tal
@@ -414,10 +443,6 @@ Skriv docstrings og doctests til følgende funktioner:
 4. En funktion der tager en liste som input og returnerer gennemsnittet af alle tal
 5. En funktion der undersøger om en liste er sorteret
 6. En funktion der tager en liste som input og returnerer en ny liste med de unikke elementer
-7. En funktion der tager en liste som input og returnerer en ny liste med de elementer der optræder mere end én gang
-8. En funktion der tager en liste som input og returnerer det n'te Fibonacci-tal
-9. En funktion der tager en liste som input og returnerer det største tal i listen
-10. En funktion der tager en liste som input og returnerer medianen af alle tal
 
 ## Debugging
 
@@ -448,14 +473,15 @@ Ulempen ved print instruktioner er, at de kan være svære at fjerne, når vi ha
 1. Herunder et program, hvor der er to mindre fejl. Brug print instruktioner til at finde fejlen i koden:
 
 ```python
-# Programmet tager et naturligt tal som input og returnerer True, hvis tallet er et primtal, og False, hvis tallet ikke er et primtal. 
-def isPrime(n):
-    if n < 2:
-        return False
-    for i in range(2, n+1):
-        if n / i == 0:
-            return False
-    return True
+def sum_list(numbers):
+    total = 0
+    for num in numbers:
+        total += num
+    return total
+
+# Test programmet
+numbers = [1, 2, 3, 4, 5]
+print(sum_list(numbers))  # Forventet output: 15
 
 ```
 
@@ -473,16 +499,20 @@ def sum_of_squares(n):
 3. Herunder et program, hvor der er en mindre fejl. Brug print instruktioner til at finde fejlen i koden:
 
 ```python
-# Funktionen skal generere en liste med de første n Fibonacci-tal
-def fibonacci_sequence(n):
-    sequence = [0, 1]
-    for i in range(2, n):
-        next_value = sequence[i - 1] + sequence[i - 2]
-        sequence.append(next_value)
-    return sequence
+def bubble_sort(numbers):
+    n = len(numbers)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if numbers[j] > numbers[j+1]:
+                numbers[j], numbers[j+1] = numbers[j+1], numbers[j]
+    return numbers
+
+# Test funktionen
+numbers = [64, 34, 25, 12, 22, 11, 90]
+print(bubble_sort(numbers))  # Forventet output: [11, 12, 22, 25, 34, 64, 90]
+
 ```
-
-
+Hint: Brug print instruktioner til at se, hvad der sker i koden, når vi kører den. Der er en fejl i koden, som gør at den ikke sorterer listen korrekt.
 
 ### Breakpoints i koden
 
@@ -641,26 +671,50 @@ print(calculate_average(numbers))  # Forventet output: 3.0
 
 ```
 
-2. Herunder et program, hvor du kan brug logfiler til at finde fejl i koden. Funktionen tager to tal som input og returnerer største fælles divisor:
+2. Herunder et program, hvor du kan brug logfiler til at finde fejl i koden. 
 
 ```python
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
-
-def gcd(a, b):
-    logging.debug(f"Starting GCD calculation for a={a}, b={b}")
-    while b != 0:
-        logging.debug(f"Inside loop: a={a}, b={b}")
-        a, b = b, a % b
-        logging.debug(f"Updated values: a={a}, b={b}")
-    logging.debug(f"Final GCD: {a}")
-    return a
+def count_occurrences(lst, element):
+    logging.debug(f"Input list: {lst}")
+    logging.debug(f"Input element: {element}")
+    count = 0
+    for item in lst:
+        if item == element:
+            count += 1
+    logging.debug(f"Count: {count}")
+    return count
 
 # Test funktionen
-print(gcd(60, 48))  # Forventet output: 12
-print(gcd(48, 60))  # Forventet output: 12
-print(gcd(-17, 23))  # Forventet output: 1
-    
+lst = [1, 2, 3, 4, 2, 2, 5, 2]
+element = 2
+
+print(count_occurrences(lst, element))  # Forventet output: 4
+
 ```
+
+3. Herunder et program, hvor du kan brug logfiler til at finde fejl i koden:
+
+```python
+import logging
+
+def selection_sort(numbers):
+    logging.debug(f"Input numbers: {numbers}")
+    n = len(numbers)
+    for i in range(n):
+        min_index = i
+        for j in range(i+1, n):
+            if numbers[j] < numbers[min_index]:
+                min_index = j
+        numbers[i], numbers[min_index] = numbers[min_index], numbers[i]
+    logging.debug(f"Sorted numbers: {numbers}")
+    return numbers
+
+# Test funktionen
+numbers = [64, 34, 25, 12, 22, 11, 90]
+print(selection_sort(numbers))  # Forventet output: [11, 12, 22, 25, 34, 64, 90]
+
+```
+Koden sorterer ikke listen korrekt. Brug logfiler til at finde fejlen i koden.
 

@@ -57,6 +57,15 @@ ved brug af eksempelvis Jupyter Notebook eller Google Colab.
 
 ---
 
+### Brugen af AI
+- AI kan bruges til at generere kode, give forslag og hjælpe med fejlfinding
+- Det er vigtigt at forstå begrænsningerne ved AI og ikke stole blindt på dens forslag
+- Hvis ikke du forstår koden AI genererer, så er det ikke sikkert at du kan bruge den
+- ChatGPT is Making us Dumber - MIT. Det handler om læring og forståelse af kode, ikke kun at få den til at virke
+- Vær ærlig omkring brugen af AI i dine opgaver og projekter 
+
+---
+
 ### Hvad er Google Colab?
 - Google Colab er et interaktivt programmeringsmiljø
 - Google Colab kan bruges til mange forskellige programmeringssprog
@@ -1054,6 +1063,52 @@ else:
 continue springer til næste iteration og else udføres.
 ---
 
+### Lister - basis
+Lister er en samling af elementer, der kan være af forskellige datatyper. Lister er mutable, hvilket betyder, at du kan ændre dem efter de er oprettet.
+
+Her et par eksempler på lister:
+```python
+fruits = ['apple', 'banana', 'cherry']
+numbers = [1, 2, 3, 4, 5]
+mixed = ['apple', 1, 2.5, True]
+```
+
+---
+
+### Liste manipulation i Python
+- Du kan tilføje elementer til en liste med append() metoden
+- Du kan fjerne elementer fra en liste med remove() metoden
+- Du kan ændre elementer i en liste ved at tildele en ny værdi til en bestemt indeks
+
+```python
+fruits = ['apple', 'banana', 'cherry']
+fruits.append('orange')
+fruits.remove('banana')
+fruits[0] = 'kiwi'
+print(fruits)  # Resultat: ['kiwi', 'cherry', 'orange']
+```
+---
+
+### Indeksering i lister
+Du kan få adgang til elementer i en liste ved hjælp af deres indeks. Indeksering starter ved 0.
+
+```python
+fruits = ['apple', 'banana', 'cherry']
+print(fruits[0])  # Resultat: apple
+print(fruits[1])  # Resultat: banana
+print(fruits[2])  # Resultat: cherry
+```
+---
+
+### Lister i lister
+Lister kan indeholde andre lister som elementer. Dette kaldes "nesting".
+
+```python
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+print(matrix[0])  # Resultat: [1, 2, 3]
+print(matrix[1][1])  # Resultat: 5
+```
+---
 
 ### Liste comprehension i Python
 - Liste comprehension er en smart måde at lave lister på
@@ -1263,6 +1318,123 @@ print(hilsentekst)
 ```
 ---
 
+### Globale variabler i funktioner
+- Globale variabler er variabler, der er defineret uden for funktioner
+- Globale variabler kan tilgås fra enhver funktion
+- Det anbefales at undgå at ændre globale variabler inden for funktioner
+---
+
+### Eksempler på brug af globale variabler
+
+```python
+x = 10  # global variabel
+
+def ændr_global():
+    global x
+    x = 20  # ændrer den globale variabel
+    print("Inde i funktionen:", x)
+
+ændr_global()
+print("Udenfor funktionen:", x)
+```
+---
+
+### I stedet for globale variabler i funktioner
+- Brug parametre til at videregive værdier til funktioner
+- Brug return-værdier til at få resultater fra funktioner
+- Brug lokale variabler til at gemme midlertidige værdier
+---
+
+### Lokale variabler i funktioner
+- Lokale variabler er variabler, der er defineret inden for en funktion
+- Lokale variabler kan kun tilgås fra den funktion, de er defineret i
+- Lokale variabler slettes, når funktionen afsluttes
+---
+
+### Eksempler på lokale variabler
+
+```python
+def lokal_variabel():
+    x = 10  # lokal variabel
+    print("Inde i funktionen:", x)
+
+lokal_variabel()
+# print("Udenfor funktionen:", x)  # Dette vil give en fejl, da x ikke er defineret her
+```
+---
+
+### Muterbare og immutable objekter
+
+- Muterbare objekter kan ændres efter de er oprettet
+- Immutable objekter kan ikke ændres efter de er oprettet
+- Eksempler på muterbare objekter: lister, ordbøger
+- Eksempler på immutable objekter: tal, strenge, tuples
+---
+
+### Håndtering af mutable og immutable datatyper i funktioner
+
+- Brug kopiering i stedet for reference til mutable objekter
+- Vær opmærksom på, at immutable objekter ikke kan ændres
+- Brug tuples i stedet for lister, når du ikke vil have ændringer
+
+---
+
+### Eksempler på ændring af mutable objekter i funktioner
+```python
+def ændre_liste(liste):
+    liste.append(4)
+    print("Inde i funktionen:", liste)
+
+min_liste = [1, 2, 3]
+ændre_liste(min_liste)
+print("Udenfor funktionen:", min_liste)
+```
+---
+
+### Eksempler på ændring af mutable objekter i funktioner
+```python
+def ændre_liste(liste):
+    liste.append(4)
+    print("Inde i funktionen:", liste)
+
+min_liste = [1, 2, 3]
+ændre_liste(min_liste)
+print("Udenfor funktionen:", min_liste)
+```
+---
+### Eksempler på ændring af immutable objekter i funktioner
+```python
+def ændre_tuple(tup):
+    # Dette vil give en fejl, da tuples er immutable
+    tup[0] = 4
+    print("Inde i funktionen:", tup)
+
+min_tuple = (1, 2, 3)
+ændre_tuple(min_tuple)
+print("Udenfor funktionen:", min_tuple)
+```
+---
+
+### Ændring af integers i funktioner
+```python
+def ændre_integer(x):
+    x = 4
+    print("Inde i funktionen:", x)
+
+min_integer = 1
+ændre_integer(min_integer)
+print("Udenfor funktionen:", min_integer)
+```
+---
+
+### Gode råd med immuterbare datatyper i funktioner
+- Undgå at ændre immutable objekter direkte
+- Brug kopiering til at arbejde med immutable objekter
+- Vær opmærksom på, at ændringer ikke påvirker det originale objekt
+- Overvej at bruge funktioner til at returnere nye objekter i stedet for at ændre eksisterende
+- Vær obs på navngivning af variabler
+
+---
 ### Filinput og filoutput i Python
 - Filinput og filoutput bruges til at læse og skrive filer
 - Filinput og filoutput bruges til at gemme og hente data
