@@ -1402,7 +1402,10 @@ min_liste = [1, 2, 3]
 print("Udenfor funktionen:", min_liste)
 ```
 ---
+
 ### Eksempler på ændring af immutable objekter i funktioner
+- Tuples er immutable, så de kan ikke ændres direkte
+
 ```python
 def ændre_tuple(tup):
     # Dette vil give en fejl, da tuples er immutable
@@ -1413,9 +1416,12 @@ min_tuple = (1, 2, 3)
 ændre_tuple(min_tuple)
 print("Udenfor funktionen:", min_tuple)
 ```
+
 ---
 
 ### Ændring af integers i funktioner
+- Integers er immutable, så de kan ikke ændres direkte
+
 ```python
 def ændre_integer(x):
     x = 4
@@ -1425,6 +1431,8 @@ min_integer = 1
 ændre_integer(min_integer)
 print("Udenfor funktionen:", min_integer)
 ```
+Her ændres den lokale kopi af `min_integer`, ikke den originale værdi.
+
 ---
 
 ### Gode råd med immuterbare datatyper i funktioner
@@ -1435,6 +1443,35 @@ print("Udenfor funktionen:", min_integer)
 - Vær obs på navngivning af variabler
 
 ---
+
+### Type hints i Python
+- Type hints bruges til at angive datatyper for funktioner og variabler
+- Type hints gør koden mere læsbar og hjælper med at fange fejl tidligt
+- Type hints er ikke obligatoriske, men anbefales
+
+---
+
+### Eksempel på type hints
+
+```python
+def add(a: int, b: int) -> int:
+    return a + b
+
+result = add(2, 3)
+```
+
+---
+
+### Et eksempel mere med lister
+
+```python
+def add_to_list(element: int, lst: list[int]) -> list[int]:
+    lst.append(element)
+    return lst
+```
+
+---
+
 ### Filinput og filoutput i Python
 - Filinput og filoutput bruges til at læse og skrive filer
 - Filinput og filoutput bruges til at gemme og hente data
