@@ -1,372 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>slides_oop_python.md</title>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-
-<style>
-/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
-body {
-	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
-	font-size: var(--vscode-markdown-font-size, 14px);
-	padding: 0 26px;
-	line-height: var(--vscode-markdown-line-height, 22px);
-	word-wrap: break-word;
-}
-
-#code-csp-warning {
-	position: fixed;
-	top: 0;
-	right: 0;
-	color: white;
-	margin: 16px;
-	text-align: center;
-	font-size: 12px;
-	font-family: sans-serif;
-	background-color:#444444;
-	cursor: pointer;
-	padding: 6px;
-	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
-}
-
-#code-csp-warning:hover {
-	text-decoration: none;
-	background-color:#007acc;
-	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
-}
-
-body.scrollBeyondLastLine {
-	margin-bottom: calc(100vh - 22px);
-}
-
-body.showEditorSelection .code-line {
-	position: relative;
-}
-
-body.showEditorSelection .code-active-line:before,
-body.showEditorSelection .code-line:hover:before {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	left: -12px;
-	height: 100%;
-}
-
-body.showEditorSelection li.code-active-line:before,
-body.showEditorSelection li.code-line:hover:before {
-	left: -30px;
-}
-
-.vscode-light.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.15);
-}
-
-.vscode-light.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.40);
-}
-
-.vscode-light.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-.vscode-dark.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.4);
-}
-
-.vscode-dark.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.60);
-}
-
-.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-.vscode-high-contrast.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 160, 0, 0.7);
-}
-
-.vscode-high-contrast.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 160, 0, 1);
-}
-
-.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-img {
-	max-width: 100%;
-	max-height: 100%;
-}
-
-a {
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-a:focus,
-input:focus,
-select:focus,
-textarea:focus {
-	outline: 1px solid -webkit-focus-ring-color;
-	outline-offset: -1px;
-}
-
-hr {
-	border: 0;
-	height: 2px;
-	border-bottom: 2px solid;
-}
-
-h1 {
-	padding-bottom: 0.3em;
-	line-height: 1.2;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-}
-
-h1, h2, h3 {
-	font-weight: normal;
-}
-
-table {
-	border-collapse: collapse;
-}
-
-table > thead > tr > th {
-	text-align: left;
-	border-bottom: 1px solid;
-}
-
-table > thead > tr > th,
-table > thead > tr > td,
-table > tbody > tr > th,
-table > tbody > tr > td {
-	padding: 5px 10px;
-}
-
-table > tbody > tr + tr > td {
-	border-top: 1px solid;
-}
-
-blockquote {
-	margin: 0 7px 0 5px;
-	padding: 0 16px 0 10px;
-	border-left-width: 5px;
-	border-left-style: solid;
-}
-
-code {
-	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
-	font-size: 1em;
-	line-height: 1.357em;
-}
-
-body.wordWrap pre {
-	white-space: pre-wrap;
-}
-
-pre:not(.hljs),
-pre.hljs code > div {
-	padding: 16px;
-	border-radius: 3px;
-	overflow: auto;
-}
-
-pre code {
-	color: var(--vscode-editor-foreground);
-	tab-size: 4;
-}
-
-/** Theming */
-
-.vscode-light pre {
-	background-color: rgba(220, 220, 220, 0.4);
-}
-
-.vscode-dark pre {
-	background-color: rgba(10, 10, 10, 0.4);
-}
-
-.vscode-high-contrast pre {
-	background-color: rgb(0, 0, 0);
-}
-
-.vscode-high-contrast h1 {
-	border-color: rgb(0, 0, 0);
-}
-
-.vscode-light table > thead > tr > th {
-	border-color: rgba(0, 0, 0, 0.69);
-}
-
-.vscode-dark table > thead > tr > th {
-	border-color: rgba(255, 255, 255, 0.69);
-}
-
-.vscode-light h1,
-.vscode-light hr,
-.vscode-light table > tbody > tr + tr > td {
-	border-color: rgba(0, 0, 0, 0.18);
-}
-
-.vscode-dark h1,
-.vscode-dark hr,
-.vscode-dark table > tbody > tr + tr > td {
-	border-color: rgba(255, 255, 255, 0.18);
-}
-
-</style>
-
-<style>
-/* Tomorrow Theme */
-/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-/* Original theme - https://github.com/chriskempson/tomorrow-theme */
-
-/* Tomorrow Comment */
-.hljs-comment,
-.hljs-quote {
-	color: #8e908c;
-}
-
-/* Tomorrow Red */
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag,
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-regexp,
-.hljs-deletion {
-	color: #c82829;
-}
-
-/* Tomorrow Orange */
-.hljs-number,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-literal,
-.hljs-type,
-.hljs-params,
-.hljs-meta,
-.hljs-link {
-	color: #f5871f;
-}
-
-/* Tomorrow Yellow */
-.hljs-attribute {
-	color: #eab700;
-}
-
-/* Tomorrow Green */
-.hljs-string,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition {
-	color: #718c00;
-}
-
-/* Tomorrow Blue */
-.hljs-title,
-.hljs-section {
-	color: #4271ae;
-}
-
-/* Tomorrow Purple */
-.hljs-keyword,
-.hljs-selector-tag {
-	color: #8959a8;
-}
-
-.hljs {
-	display: block;
-	overflow-x: auto;
-	color: #4d4d4c;
-	padding: 0.5em;
-}
-
-.hljs-emphasis {
-	font-style: italic;
-}
-
-.hljs-strong {
-	font-weight: bold;
-}
-</style>
-
-<style>
-/*
- * Markdown PDF CSS
- */
-
- body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
-	padding: 0 12px;
-}
-
-pre {
-	background-color: #f8f8f8;
-	border: 1px solid #cccccc;
-	border-radius: 3px;
-	overflow-x: auto;
-	white-space: pre-wrap;
-	overflow-wrap: break-word;
-}
-
-pre:not(.hljs) {
-	padding: 23px;
-	line-height: 19px;
-}
-
-blockquote {
-	background: rgba(127, 127, 127, 0.1);
-	border-color: rgba(0, 122, 204, 0.5);
-}
-
-.emoji {
-	height: 1.4em;
-}
-
-code {
-	font-size: 14px;
-	line-height: 19px;
-}
-
-/* for inline code */
-:not(pre):not(.hljs) > code {
-	color: #C9AE75; /* Change the old color so it seems less like an error */
-	font-size: inherit;
-}
-
-/* Page Break : use <div class="page"/> to insert page break
--------------------------------------------------------- */
-.page {
-	page-break-after: always;
-}
-
-</style>
-
-<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-</head>
-<body>
-  <script>
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-          ? 'dark'
-          : 'default'
-    });
-  </script>
 <h1 id="introduktion-til-objekt-orienteret-programmering-i-python">Introduktion til Objekt-orienteret programmering i Python</h1>
-<h2 id="af-henrik-sterner-henriksternergmailcom">Af Henrik Sterner (henrik.sterner@gmail.com)</h2>
+<h2 id="af-henrik-sterner-henrik.sternergmail.com">Af Henrik Sterner (henrik.sterner@gmail.com)</h2>
 <h1 id="om-brugen-af-disse-slides">Om brugen af disse slides</h1>
 <ul>
 <li>Disse slides forsøger at eksemplifere en lang række af de vigtige begreber i Python</li>
@@ -379,18 +12,489 @@ code {
 <ul>
 <li>Fra markdown til pdf ved brug af pandoc:</li>
 </ul>
-<pre class="hljs"><code><div>pandoc -t beamer -o slides_oop_python.pdf slides_oop_python.md
-</div></code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-t</span> beamer <span class="at">-o</span> slides_oop_python.pdf slides_oop_python.md</span></code></pre></div>
 <ul>
 <li>Fra markdown til word ved brug af pandoc:</li>
 </ul>
-<pre class="hljs"><code><div>pandoc -t docx -o slides_oop_python.docx slides_oop_python.md
-</div></code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-t</span> docx <span class="at">-o</span> slides_oop_python.docx slides_oop_python.md</span></code></pre></div>
 <ul>
-<li>Fra markdown til pdf hvor sektioner tilføjes som hovedpunkter i pdf'en:</li>
+<li>Fra markdown til pdf hvor sektioner tilføjes som hovedpunkter i pdf’en:</li>
 </ul>
-<pre class="hljs"><code><div>pandoc -t beamer -o slides_oop_python.pdf slides_oop_python.md --toc
-</div></code></pre>
-
-</body>
-</html>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-t</span> beamer <span class="at">-o</span> slides_oop_python.pdf slides_oop_python.md <span class="at">--toc</span></span></code></pre></div>
+<h1 id="hvad-er-objekt-orienteret-programmering">Hvad er objekt-orienteret programmering?</h1>
+<ul>
+<li>En måde at tænke og strukturere programmering på</li>
+<li>Gør det muligt at skabe genbrugelige og vedligeholdbare programmer</li>
+<li>Kan bruges til at implementere komplekse systemer</li>
+<li>Bruges i stort set alle moderne programmeringssprog</li>
+<li>Giver mulighed for at arbejde med abstraktioner og modellering af virkeligheden</li>
+<li>Mest anvendte paradigme i moderne programmering</li>
+</ul>
+<h1 id="hvad-er-et-objekt-og-en-klasse">Hvad er et objekt og en klasse?</h1>
+<ul>
+<li>Et objekt er en instans af en klasse</li>
+<li>En klasse er en skabelon for et objekt</li>
+<li>En klasse kan have attributter (egenskaber) og metoder (funktioner)</li>
+</ul>
+<h1 id="eksempel-på-en-klasse">Eksempel på en klasse</h1>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Person:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, age):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> age</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> say_hello(<span class="va">self</span>):</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&#39;Hello, my name is </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> and I am </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>age<span class="sc">}</span><span class="ss"> years old&#39;</span>)</span></code></pre></div>
+<p>Klassen <code>Person</code> har to attributter <code>name</code> og <code>age</code> og en metode <code>say_hello</code>.</p>
+<h1 id="eksempel-på-brug-af-klassen">Eksempel på brug af klassen</h1>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> Person(<span class="st">&#39;Alice&#39;</span>, <span class="dv">25</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> Person(<span class="st">&#39;Bob&#39;</span>, <span class="dv">30</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>p1.say_hello()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>p2.say_hello()</span></code></pre></div>
+<p>Output:</p>
+<pre><code>Hello, my name is Alice and I am 25 years old
+Hello, my name is Bob and I am 30 years old</code></pre>
+<p>Vi bemærker, at vi har to forskellige instanser af klassen <code>Person</code> med forskellige værdier for attributterne <code>name</code> og <code>age</code>.</p>
+<h1 id="konstruktør-__init__">Konstruktør: <code>__init__</code></h1>
+<ul>
+<li>Konstruktøren <code>__init__</code> er en speciel metode, der kaldes, når et objekt af klassen oprettes</li>
+<li>Konstruktøren bruges til at initialisere objektets attributter</li>
+<li>Konstruktøren kaldes automatisk, når et objekt oprettes</li>
+<li>Konstruktøren kaldes med <code>self</code> som første argument</li>
+<li><code>self</code> refererer til objektet selv og bruges til at tilgå objektets attributter og metoder</li>
+</ul>
+<h1 id="eksempel-på-konstruktør">Eksempel på konstruktør</h1>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Person:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, age):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> age</span></code></pre></div>
+<p>Konstruktøren initialiserer attributterne <code>name</code> og <code>age</code> med værdierne <code>name</code> og <code>age</code>.</p>
+<h1 id="eksempel-på-brug-af-konstruktør">Eksempel på brug af konstruktør</h1>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> Person(<span class="st">&#39;Alice&#39;</span>, <span class="dv">25</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> Person(<span class="st">&#39;Bob&#39;</span>, <span class="dv">30</span>)</span></code></pre></div>
+<p>Vi opretter to instanser af klassen <code>Person</code> med forskellige værdier for attributterne <code>name</code> og <code>age</code>.</p>
+<h1 id="eksempel-på-en-anden-konstruktør">Eksempel på en anden konstruktør</h1>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Car:</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, make, model, year):</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.make <span class="op">=</span> make</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.model <span class="op">=</span> model</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.year <span class="op">=</span> year</span></code></pre></div>
+<p>Konstruktøren initialiserer attributterne <code>make</code>, <code>model</code> og <code>year</code> med værdierne <code>make</code>, <code>model</code> og <code>year</code>.</p>
+<h1 id="eksempel-på-brug-af-konstruktør-1">Eksempel på brug af konstruktør</h1>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>c1 <span class="op">=</span> Car(<span class="st">&#39;Ford&#39;</span>, <span class="st">&#39;Mustang&#39;</span>, <span class="dv">1964</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>c2 <span class="op">=</span> Car(<span class="st">&#39;Tesla&#39;</span>, <span class="st">&#39;Model S&#39;</span>, <span class="dv">2021</span>)</span></code></pre></div>
+<p>Vi opretter to instanser af klassen <code>Car</code> med forskellige værdier for attributterne <code>make</code>, <code>model</code> og <code>year</code>.</p>
+<h1 id="eksempel-på-en-konstruktør-uden-argumenter">Eksempel på en konstruktør uden argumenter</h1>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Dog:</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> <span class="st">&#39;Fido&#39;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> <span class="dv">1</span></span></code></pre></div>
+<p>Konstruktøren initialiserer attributterne <code>name</code> og <code>age</code> med standardværdierne <code>'Fido'</code> og <code>1</code>.</p>
+<h1 id="eksempel-på-brug-af-konstruktør-uden-argumenter">Eksempel på brug af konstruktør uden argumenter</h1>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>d1 <span class="op">=</span> Dog()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>d2 <span class="op">=</span> Dog()</span></code></pre></div>
+<p>Vi opretter to instanser af klassen <code>Dog</code> med standardværdierne for attributterne <code>name</code> og <code>age</code>.</p>
+<h1 id="klasse-med-konstruktører-med-og-uden-argumenter">Klasse med konstruktører med og uden argumenter</h1>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Dog:</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name<span class="op">=</span><span class="st">&#39;Fido&#39;</span>, age<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> age</span></code></pre></div>
+<p>Konstruktøren initialiserer attributterne <code>name</code> og <code>age</code> med standardværdierne <code>'Fido'</code> og <code>1</code>.</p>
+<h1 id="attributter-og-metoder">Attributter og metoder</h1>
+<ul>
+<li>Attributter er egenskaber ved et objekt</li>
+<li>Metoder er funktioner, der kan tilgå og ændre attributterne</li>
+<li>Attributter og metoder tilgås ved brug af punktnotation</li>
+<li>Attributter og metoder kan være offentlige eller private (protected findes ikke i Python)</li>
+<li>Offentlige attributter og metoder kan tilgås fra andre klasser</li>
+<li>Private attributter og metoder kan kun tilgås fra klassen selv</li>
+<li>Private attributter og metoder angives ved at starte navnet med en underscore <code>_</code></li>
+<li>Private attributter og metoder kan tilgås fra andre klasser</li>
+</ul>
+<h1 id="eksempel-på-en-klasse-med-offentlige-attributter-og-metoder">Eksempel på en klasse med offentlige attributter og metoder</h1>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Student:</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, age):</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> age</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> say_hello(<span class="va">self</span>):</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&#39;Hello, my name is </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> and I am </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>age<span class="sc">}</span><span class="ss"> years old&#39;</span>)</span></code></pre></div>
+<p>Attributterne <code>name</code> og <code>age</code> og metoden <code>say_hello</code> er offentlige.</p>
+<h1 id="eksempel-på-en-klasse-med-private-attributter-og-metoder">Eksempel på en klasse med private attributter og metoder</h1>
+<p>Vi tilføjer en attribut <code>cprnr</code> som bliver privat ved at starte navnet med en underscore <code>_</code>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Student:</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, age, cpr_nr):</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> age</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._cprnr <span class="op">=</span> cprnr</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _get_cpr_nr(<span class="va">self</span>):</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._cprnr</span></code></pre></div>
+<h1 id="oprette-en-student">Oprette en student</h1>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> _name_ <span class="op">==</span> <span class="st">&#39;_main_&#39;</span>:</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    s1 <span class="op">=</span> Student(<span class="st">&#39;Alice&#39;</span>, <span class="dv">25</span>, <span class="st">&#39;123456-7890&#39;</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s1.name) <span class="co"># Alice</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s1._cprnr) <span class="co"># Fejl, da attributten er privat</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s1._get_cpr_nr()) <span class="co"># Fejl, da metoden er privat</span></span></code></pre></div>
+<p>Bemærk if-testen, der sikrer, at koden kun køres, hvis filen køres som hovedprogram.</p>
+<h1 id="operator-overloading">Operator overloading</h1>
+<ul>
+<li>Python tillader operator overloading</li>
+<li>Dette betyder, at operatører som <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> og <code>==</code> kan tilpasses til at virke med brugerdefinerede klasser</li>
+<li>Dette gøres ved at tilføje specielle metoder til klassen</li>
+<li>Disse metoder kaldes, når operatørerne bruges på objekter af klassen</li>
+<li>Eksempler på specielle metoder er <code>__add__</code>, <code>__sub__</code>, <code>__mul__</code>, <code>__truediv__</code> og <code>__eq__</code></li>
+<li>Se https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types for en komplet liste</li>
+<li>Disse metoder kaldes automatisk, når operatørerne bruges på objekter af klassen</li>
+</ul>
+<h1 id="eksempel-på-operator-overloading">Eksempel på operator overloading</h1>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Point:</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, x, y):</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.x <span class="op">=</span> x</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.y <span class="op">=</span> y</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__add__</span>(<span class="va">self</span>, other):</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> Point(<span class="va">self</span>.x <span class="op">+</span> other.x, <span class="va">self</span>.y <span class="op">+</span> other.y)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__eq__</span>(<span class="va">self</span>, other):</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.x <span class="op">==</span> other.x <span class="kw">and</span> <span class="va">self</span>.y <span class="op">==</span> other.y</span></code></pre></div>
+<p>Vi tilføjer metoderne <code>__add__</code> og <code>__eq__</code> til klassen <code>Point</code>.</p>
+<h1 id="brug-af-operator-overloading">Brug af operator overloading</h1>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> Point(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> Point(<span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>p3 <span class="op">=</span> p1 <span class="op">+</span> p2</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p3.x, p3.y) <span class="co"># 4 6</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p1 <span class="op">==</span> p2) <span class="co"># False</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p1 <span class="op">==</span> Point(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># True</span></span></code></pre></div>
+<p>Vi bruger metoderne <code>__add__</code> og <code>__eq__</code> til at tilføje to punkter og sammenligne to punkter.</p>
+<h1 id="nedarvning">Nedarvning</h1>
+<ul>
+<li>Nedarvning er en måde at opbygge klasser på</li>
+<li>En klasse kan nedarve fra en anden klasse</li>
+<li>Den nedarvende klasse kaldes en underklasse</li>
+<li>Den nedarvede klasse kaldes en superklasse</li>
+<li>En underklasse arver attributter og metoder fra superklassen</li>
+<li>En underklasse kan tilføje nye attributter og metoder og ændre eksisterende metoder</li>
+<li>En underklasse kan også tilføje en konstruktør, der kaldes superklassens konstruktør</li>
+</ul>
+<h1 id="eksempel-på-nedarvning">Eksempel på nedarvning</h1>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Animal:</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> speak(<span class="va">self</span>):</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Dog(Animal):</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> speak(<span class="va">self</span>):</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&#39;Woof&#39;</span></span></code></pre></div>
+<p>Vi opretter en superklasse <code>Animal</code> og en underklasse <code>Dog</code>, der nedarver fra superklassen.</p>
+<h1 id="brug-af-nedarvning">Brug af nedarvning</h1>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> Animal(<span class="st">&#39;Fido&#39;</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>d1 <span class="op">=</span> Dog(<span class="st">&#39;Rex&#39;</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a1.name) <span class="co"># Fido</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d1.name) <span class="co"># Rex</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a1.speak()) <span class="co"># None</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d1.speak()) <span class="co"># Woof</span></span></code></pre></div>
+<p>Vi opretter instanser af superklassen <code>Animal</code> og underklassen <code>Dog</code> og kalder metoderne <code>speak</code>.</p>
+<h1 id="hvad-med-super">Hvad med super?</h1>
+<ul>
+<li><code>super</code> er en indbygget funktion, der bruges til at kalde metoder fra superklassen</li>
+<li><code>super</code> bruges i konstruktøren for at kalde superklassens konstruktør</li>
+<li><code>super</code> bruges også til at kalde superklassens metoder</li>
+<li><code>super</code> bruges i stedet for at bruge superklassens navn direkte</li>
+</ul>
+<h1 id="eksempel-på-brug-af-super">Eksempel på brug af super</h1>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Animal:</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> speak(<span class="va">self</span>):</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Dog(Animal):</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, breed):</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(name)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.breed <span class="op">=</span> breed</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> speak(<span class="va">self</span>):</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&#39;Woof&#39;</span></span></code></pre></div>
+<p>Vi bruger <code>super</code> til at kalde superklassens konstruktør i underklassens konstruktør.</p>
+<h1 id="brug-af-super">Brug af super</h1>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>d1 <span class="op">=</span> Dog(<span class="st">&#39;Rex&#39;</span>, <span class="st">&#39;Labrador&#39;</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d1.name) <span class="co"># Rex</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d1.breed) <span class="co"># Labrador</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d1.speak()) <span class="co"># Woof</span></span></code></pre></div>
+<p>Vi opretter en instans af underklassen <code>Dog</code> og kalder metoderne <code>speak</code>.</p>
+<h1 id="abstrakte-klasser">Abstrakte klasser</h1>
+<ul>
+<li>En abstrakt klasse er en klasse, der ikke kan oprettes</li>
+<li>En abstrakt klasse bruges som skabelon for andre klasser</li>
+<li>En abstrakt klasse kan have metoder, der ikke er implementeret</li>
+<li>En abstrakt klasse kan have metoder, der skal implementeres i underklasser</li>
+</ul>
+<h1 id="eksempel-på-abstrakt-klasse">Eksempel på abstrakt klasse</h1>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> abc <span class="im">import</span> ABC, abstractmethod</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Animal(ABC):</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">@abstractmethod</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> speak(<span class="va">self</span>):</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span></code></pre></div>
+<p>Vi opretter en abstrakt klasse <code>Animal</code> med en abstrakt metode <code>speak</code>. Abstrakte klasser importeres fra modulet <code>abc</code>.</p>
+<h1 id="brug-af-abstrakt-klasse">Brug af abstrakt klasse</h1>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Dog(Animal):</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> speak(<span class="va">self</span>):</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&#39;Woof&#39;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Cat(Animal):</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> speak(<span class="va">self</span>):</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span></code></pre></div>
+<h1 id="brug-af-abstrakt-klasse-1">Brug af abstrakt klasse</h1>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>d1 <span class="op">=</span> Dog(<span class="st">&#39;Rex&#39;</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>c1 <span class="op">=</span> Cat(<span class="st">&#39;Whiskers&#39;</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d1.speak()) <span class="co"># Woof</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(c1.speak()) <span class="co"># Fejl, da metoden ikke er implementeret</span></span></code></pre></div>
+<p>Vi opretter underklasser <code>Dog</code> og <code>Cat</code> af abstrakt klassen <code>Animal</code> og kalder metoden <code>speak</code>.</p>
+<h1 id="kan-vi-udvide-en-abstrakt-klasse-i-børneklassen">Kan vi udvide en abstrakt klasse i børneklassen?</h1>
+<ul>
+<li>Ja, vi kan udvide en abstrakt klasse i børneklassen</li>
+<li>Vi kan tilføje attributter og metoder i børneklassen</li>
+<li>Vi kan også tilføje en konstruktør, der kaldes superklassens konstruktør</li>
+<li>Vi kan også tilføje en metode, der skal implementeres i børneklassen</li>
+</ul>
+<h1 id="eksempel-på-udvidelse-af-abstrakt-klasse">Eksempel på udvidelse af abstrakt klasse</h1>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Dog(Animal):</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, breed):</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(name)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.breed <span class="op">=</span> breed</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> speak(<span class="va">self</span>):</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&#39;Woof&#39;</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> wag_tail(<span class="va">self</span>):</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&#39;Wagging tail&#39;</span></span></code></pre></div>
+<p>Vi udvider abstrakt klassen <code>Animal</code> med en konstruktør og en metode <code>wag_tail</code>.</p>
+<h1 id="brug-af-udvidelse-af-abstrakt-klasse">Brug af udvidelse af abstrakt klasse</h1>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>d1 <span class="op">=</span> Dog(<span class="st">&#39;Rex&#39;</span>, <span class="st">&#39;Labrador&#39;</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d1.name) <span class="co"># Rex</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d1.breed) <span class="co"># Labrador</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d1.speak()) <span class="co"># Woof</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d1.wag_tail()) <span class="co"># Wagging tail</span></span></code></pre></div>
+<p>Vi opretter en instans af underklassen <code>Dog</code> og kalder metoderne <code>speak</code> og <code>wag_tail</code>.</p>
+<h1 id="hvad-er-polymorfi">Hvad er polymorfi?</h1>
+<ul>
+<li>Polymorfi betyder, at en metode kan have forskellige former</li>
+<li>Polymorfi bruges til at implementere metoder, der kan have forskellige implementeringer i underklasser</li>
+<li>Polymorfi bruges til at implementere metoder, der kan tage forskellige typer som argumenter</li>
+<li>Polymorfi bruges til at implementere metoder, der kan returnere forskellige typer</li>
+<li>Polymorfi bruges til at implementere metoder, der kan have forskellige signaturer</li>
+</ul>
+<h1 id="eksempel-på-polymorfi">Eksempel på polymorfi</h1>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Animal:</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> speak(<span class="va">self</span>):</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Dog(Animal):</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> speak(<span class="va">self</span>):</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&#39;Woof&#39;</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Cat(Animal):</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> speak(<span class="va">self</span>):</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&#39;Meow&#39;</span></span></code></pre></div>
+<p>Vi opretter en superklasse <code>Animal</code> og underklasser <code>Dog</code> og <code>Cat</code>, der nedarver fra superklassen.</p>
+<h1 id="brug-af-polymorfi">Brug af polymorfi</h1>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_animal_speak(animal):</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(animal.speak())</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> Animal()</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>d1 <span class="op">=</span> Dog()</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>c1 <span class="op">=</span> Cat()</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>make_animal_speak(a1) <span class="co"># None</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>make_animal_speak(d1) <span class="co"># Woof</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>make_animal_speak(c1) <span class="co"># Meow</span></span></code></pre></div>
+<p>Vi opretter instanser af superklassen <code>Animal</code> og underklasserne <code>Dog</code> og <code>Cat</code> og kalder metoden <code>speak</code>.</p>
+<h1 id="hvad-er-en-statisk-metode">Hvad er en statisk metode?</h1>
+<ul>
+<li>En statisk metode er en metode, der tilhører klassen og ikke objekterne</li>
+<li>En statisk metode kaldes med klassen som argument og ikke objektet</li>
+<li>En statisk metode kan tilgås fra klassen og ikke objekterne</li>
+<li>En statisk metode bruges til at implementere metoder, der ikke tilgår objektets attributter</li>
+<li>En statisk metode angives ved at bruge dekoratoren <code>@staticmethod</code></li>
+<li>En statisk metode kaldes med klassen som argument og ikke objektet</li>
+</ul>
+<h1 id="eksempel-på-statisk-metode">Eksempel på statisk metode</h1>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Math:</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">@staticmethod</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add(x, y):</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x <span class="op">+</span> y</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">@staticmethod</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> subtract(x, y):</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x <span class="op">-</span> y</span></code></pre></div>
+<p>Vi opretter en klasse <code>Math</code> med statiske metoder <code>add</code> og <code>subtract</code>.</p>
+<h1 id="brug-af-statisk-metode">Brug af statisk metode</h1>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Math.add(<span class="dv">2</span>, <span class="dv">3</span>)) <span class="co"># 5</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Math.subtract(<span class="dv">5</span>, <span class="dv">3</span>)) <span class="co"># 2</span></span></code></pre></div>
+<p>Vi kalder de statiske metoder <code>add</code> og <code>subtract</code> fra klassen <code>Math</code>.</p>
+<h1 id="hvad-er-en-klasse-metode">Hvad er en klasse metode?</h1>
+<ul>
+<li>En klasse metode er en metode, der tilhører klassen og ikke objekterne</li>
+<li>En klasse metode kaldes med klassen som argument og ikke objektet</li>
+<li>En klasse metode kan tilgås fra klassen og ikke objekterne</li>
+<li>En klasse metode bruges til at implementere metoder, der tilgår klassens attributter</li>
+</ul>
+<h1 id="eksempel-på-klasse-metode">Eksempel på klasse metode</h1>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Person:</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>        Person.count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">@classmethod</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_count(cls):</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> cls.count</span></code></pre></div>
+<p>Vi opretter en klasse <code>Person</code> med en klasse metode <code>get_count</code>.</p>
+<h1 id="brug-af-klasse-metode">Brug af klasse metode</h1>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> Person(<span class="st">&#39;Alice&#39;</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> Person(<span class="st">&#39;Bob&#39;</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Person.get_count()) <span class="co"># 2</span></span></code></pre></div>
+<p>Vi opretter instanser af klassen <code>Person</code> og kalder metoden <code>get_count</code> fra klassen <code>Person</code>.</p>
+<h1 id="klasser-vs.-moduler">Klasser vs. moduler</h1>
+<ul>
+<li>Klasser bruges til at opbygge objekter</li>
+<li>Moduler bruges til at opbygge programmer</li>
+<li>Klasser bruges til at opbygge objekter, der har attributter og metoder</li>
+<li>Moduler bruges til at opbygge programmer, der har funktioner og konstanter</li>
+<li>Klasser bruges til at opbygge objekter, der kan nedarve fra andre klasser</li>
+<li>Moduler bruges til at opbygge programmer, der kan importeres i andre moduler</li>
+</ul>
+<h1 id="et-modul-af-klasser">Et modul af klasser</h1>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># person.py</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Person:</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, age):</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> age</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> say_hello(<span class="va">self</span>):</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&#39;Hello, my name is </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> and I am </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>age<span class="sc">}</span><span class="ss"> years old&#39;</span>)   </span></code></pre></div>
+<p>Vi opretter en klasse <code>Person</code> i modulet <code>person</code>.</p>
+<h1 id="brug-af-modul-af-klasser">Brug af modul af klasser</h1>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> person <span class="im">import</span> Person</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> Person(<span class="st">&#39;Alice&#39;</span>, <span class="dv">25</span>)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> Person(<span class="st">&#39;Bob&#39;</span>, <span class="dv">30</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>p1.say_hello()</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>p2.say_hello()</span></code></pre></div>
+<p>Vi importerer klassen <code>Person</code> fra modulet <code>person</code> og opretter instanser af klassen. Forudsætter, at <code>person.py</code> findes i samme mappe som hovedprogrammet. Hvis <code>person.py</code> findes i en undermappe, kan vi bruge <code>from folder.person import Person</code>.</p>
+<h1 id="decorators---hvad-er-det">Decorators - hvad er det?</h1>
+<ul>
+<li>En decorator er en funktion, der tager en anden funktion som argument</li>
+<li>En decorator bruges til at udvide funktionaliteten af en funktion</li>
+<li>En decorator bruges til at tilføje funktionalitet til en funktion uden at ændre funktionen</li>
+<li>En decorator bruges til at tilføje funktionalitet til en klasse eller metode uden at ændre klassen eller metoden</li>
+</ul>
+<h1 id="simpelt-eksempel-på-decorator">Simpelt eksempel på decorator</h1>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_decorator(func):</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> wrapper():</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&#39;Something is happening before the function is called.&#39;</span>)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>        func()</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&#39;Something is happening after the function is called.&#39;</span>)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> wrapper</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> say_hello():</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Hello!&#39;</span>)</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>say_hello <span class="op">=</span> my_decorator(say_hello)</span></code></pre></div>
+<p>Vi opretter en decorator <code>my_decorator</code> og dekorerer funktionen <code>say_hello</code>.</p>
+<h1 id="brug-af-decorator">Brug af decorator</h1>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>say_hello()</span></code></pre></div>
+<p>Vi kalder funktionen <code>say_hello</code>, der er dekoreret med <code>my_decorator</code>. Resultatet bliver:</p>
+<pre><code>Something is happening before the function is called.
+Hello!
+Something is happening after the function is called.</code></pre>
+<h1 id="decorator-med--notation">Decorator med <code>@</code>-notation</h1>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_decorator(func):</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> wrapper():</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&#39;Something is happening before the function is called.&#39;</span>)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>        func()</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&#39;Something is happening after the function is called.&#39;</span>)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> wrapper</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="at">@my_decorator</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> say_hello():</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Hello!&#39;</span>)</span></code></pre></div>
+<p>Vi dekorerer funktionen <code>say_hello</code> med <code>my_decorator</code> ved brug af <code>@</code>-notation.</p>
+<h1 id="brug-af-decorator-med--notation">Brug af decorator med <code>@</code>-notation</h1>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>say_hello()</span></code></pre></div>
+<p>Vi kalder funktionen <code>say_hello</code>, der er dekoreret med <code>my_decorator</code>. Resultatet bliver:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>Something <span class="kw">is</span> happening before the function <span class="kw">is</span> called.</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>Hello<span class="op">!</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>Something <span class="kw">is</span> happening after the function <span class="kw">is</span> called.</span></code></pre></div>
+<h1 id="decorator-med-argumenter">Decorator med argumenter</h1>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_decorator(func):</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> wrapper(<span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&#39;Something is happening before the function is called.&#39;</span>)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>        func(<span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&#39;Something is happening after the function is called.&#39;</span>)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> wrapper</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="at">@my_decorator</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> say_hello(name):</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&#39;Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!&#39;</span>)</span></code></pre></div>
+<p>Vi dekorerer funktionen <code>say_hello</code> med <code>my_decorator</code> og tilføjer argumenter til <code>wrapper</code>.</p>
+<h1 id="brug-af-decorator-med-argumenter">Brug af decorator med argumenter</h1>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>say_hello(<span class="st">&#39;Alice&#39;</span>)</span></code></pre></div>
+<p>Vi kalder funktionen <code>say_hello</code>, der er dekoreret med <code>my_decorator</code>. Resultatet bliver:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>Something <span class="kw">is</span> happening before the function <span class="kw">is</span> called.</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>Hello, Alice<span class="op">!</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>Something <span class="kw">is</span> happening after the function <span class="kw">is</span> called.</span></code></pre></div>
+<h1 id="decorator-med-argumenter-1">Decorator med argumenter</h1>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_decorator(prefix):</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> decorator(func):</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> wrapper(<span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>prefix<span class="sc">}</span><span class="ss">: Something is happening before the function is called.&#39;</span>)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>            func(<span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>prefix<span class="sc">}</span><span class="ss">: Something is happening after the function is called.&#39;</span>)</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> wrapper</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> decorator</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="at">@my_decorator</span>(<span class="st">&#39;DEBUG&#39;</span>)</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> say_hello(name):</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&#39;Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!&#39;</span>)</span></code></pre></div>
+<p>Vi opretter en decorator <code>my_decorator</code> med argumenter og dekorerer funktionen <code>say_hello</code>.</p>
+<h1 id="brug-af-decorator-med-argumenter-1">Brug af decorator med argumenter</h1>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>say_hello(<span class="st">&#39;Alice&#39;</span>)</span></code></pre></div>
+<p>Vi kalder funktionen <code>say_hello</code>, der er dekoreret med <code>my_decorator</code>. Resultatet bliver:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>DEBUG: Something <span class="kw">is</span> happening before the function <span class="kw">is</span> called.</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>Hello, Alice<span class="op">!</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>DEBUG: Something <span class="kw">is</span> happening after the function <span class="kw">is</span> called.</span></code></pre></div>
+<h1 id="klassediagrammer">Klassediagrammer</h1>
+<ul>
+<li>Et klassediagram er en grafisk repræsentation af klasser og deres relationer</li>
+<li>Et klassediagram viser klasser, attributter og metoder</li>
+<li>Et klassediagram viser relationer mellem klasser</li>
+<li>Et klassediagram viser nedarvning, association, aggregering og komposition</li>
+<li>Et klassediagram viser offentlige og private attributter og metoder</li>
+</ul>
+<h1 id="et-generisk-klassediagram">Et generisk klassediagram</h1>
+<pre class="plantuml"><code>@startuml
+class Person {
+    -name: str
+    -age: int
+    +__init__(name: str, age: int)
+    +say_hello(): None
+}
+class Student {
+    -name: str
+    -age: int
+    -cprnr: str
+    +__init__(name: str, age: int, cprnr: str)
+    +_get_cpr_nr(): str
+}
+Person &lt;|-- Student
+@enduml</code></pre>
