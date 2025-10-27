@@ -2,16 +2,16 @@
 
 ## Af Henrik Sterner (henrik.sterner@gmail.com)
 
-
-# Om brugen af disse slides
+---
+### Om brugen af disse slides
 - Disse slides forsøger at eksemplifere en lang række af de vigtige begreber i Python
 - De må på ingen måde kopieres uden tilladelse fra Henrik Sterner
 - De er lavet i markdown og kan derfor nemt konverteres til andre formater
 - Ved brug af Visual Studio Code kan de konverteres til HTML, PDF, PowerPoint, Word, LaTeX og mange andre formater 
 - Slides er tilgængelige på github.com/henriksterner/IntroPython/
 
-
-# Konvertere slides til andre formater
+---
+### Konvertere slides til andre formater
 
 - Fra markdown til pdf ved brug af pandoc: 
 ```bash 
@@ -26,8 +26,8 @@ pandoc -t docx -o slides_oop_python.docx slides_oop_python.md
 ```bash
 pandoc -t beamer -o slides_oop_python.pdf slides_oop_python.md --toc
 ```
-
-# Hvad er objekt-orienteret programmering?
+---
+### Hvad er objekt-orienteret programmering?
 - En måde at tænke og strukturere programmering på
 - Gør det muligt at skabe genbrugelige og vedligeholdbare programmer
 - Kan bruges til at implementere komplekse systemer
@@ -35,12 +35,15 @@ pandoc -t beamer -o slides_oop_python.pdf slides_oop_python.md --toc
 - Giver mulighed for at arbejde med abstraktioner og modellering af virkeligheden
 - Mest anvendte paradigme i moderne programmering
 
-# Hvad er et objekt og en klasse?
+---
+
+### Hvad er et objekt og en klasse?
 - Et objekt er en instans af en klasse
 - En klasse er en skabelon for et objekt
 - En klasse kan have attributter (egenskaber) og metoder (funktioner)
-  
-# Eksempel på en klasse
+---  
+
+### Eksempel på en klasse
 ```python
 class Person:
     def __init__(self, name, age):
@@ -52,7 +55,9 @@ class Person:
 ```
 Klassen `Person` har to attributter `name` og `age` og en metode `say_hello`. 
 
-# Eksempel på brug af klassen
+---
+
+### Eksempel på brug af klassen
 ```python
 p1 = Person('Alice', 25)
 p2 = Person('Bob', 30)
@@ -67,30 +72,40 @@ Hello, my name is Bob and I am 30 years old
 ```
 Vi bemærker, at vi har to forskellige instanser af klassen `Person` med forskellige værdier for attributterne `name` og `age`.
 
-# Konstruktør: `__init__`
+---
+
+### Konstruktør: `__init__`
 - Konstruktøren `__init__` er en speciel metode, der kaldes, når et objekt af klassen oprettes
 - Konstruktøren bruges til at initialisere objektets attributter
 - Konstruktøren kaldes automatisk, når et objekt oprettes
 - Konstruktøren kaldes med `self` som første argument
 - `self` refererer til objektet selv og bruges til at tilgå objektets attributter og metoder
 
-# Eksempel på konstruktør
+---
+
+### Eksempel på konstruktør
 ```python
 class Person:
     def __init__(self, name, age):
         self.name = name
         self.age = age
 ```
-Konstruktøren initialiserer attributterne `name` og `age` med værdierne `name` og `age`.
+Konstruktøren initialiserer attributterne `name` og `age` med 
+værdierne `name` og `age`.
 
-# Eksempel på brug af konstruktør
+---
+
+### Eksempel på brug af konstruktør
 ```python
 p1 = Person('Alice', 25)
 p2 = Person('Bob', 30)
 ```
 Vi opretter to instanser af klassen `Person` med forskellige værdier for attributterne `name` og `age`.
 
-# Eksempel på en anden konstruktør
+
+---
+
+### Eksempel på en anden konstruktør
 ```python
 class Car:
     def __init__(self, make, model, year):
@@ -100,14 +115,21 @@ class Car:
 ```
 Konstruktøren initialiserer attributterne `make`, `model` og `year` med værdierne `make`, `model` og `year`.
 
-# Eksempel på brug af konstruktør
+---
+
+### Eksempel på brug af konstruktør
+```python
+c1 = Car('Ford', 'Mustang', 1964)
+c2 = Car('Tesla', 'Model S', 2021)
 ```python
 c1 = Car('Ford', 'Mustang', 1964)
 c2 = Car('Tesla', 'Model S', 2021)
 ```
 Vi opretter to instanser af klassen `Car` med forskellige værdier for attributterne `make`, `model` og `year`.
 
-# Eksempel på en konstruktør uden argumenter
+---
+
+### Eksempel på en konstruktør uden argumenter
 ```python
 class Dog:
     def __init__(self):
@@ -116,14 +138,18 @@ class Dog:
 ```
 Konstruktøren initialiserer attributterne `name` og `age` med standardværdierne `'Fido'` og `1`.
 
-# Eksempel på brug af konstruktør uden argumenter
+---
+
+### Eksempel på brug af konstruktør uden argumenter
 ```python
 d1 = Dog()
 d2 = Dog()
 ```
 Vi opretter to instanser af klassen `Dog` med standardværdierne for attributterne `name` og `age`.
 
-# Klasse med konstruktører med og uden argumenter
+---
+
+### Klasse med konstruktører med og uden argumenter
 ```python
 class Dog:
     def __init__(self, name='Fido', age=1):
@@ -132,8 +158,10 @@ class Dog:
 ```
 Konstruktøren initialiserer attributterne `name` og `age` med standardværdierne `'Fido'` og `1`.
 
+---
 
-# Attributter og metoder
+
+### Attributter og metoder
 - Attributter er egenskaber ved et objekt
 - Metoder er funktioner, der kan tilgå og ændre attributterne
 - Attributter og metoder tilgås ved brug af punktnotation
@@ -143,7 +171,9 @@ Konstruktøren initialiserer attributterne `name` og `age` med standardværdiern
 - Private attributter og metoder angives ved at starte navnet med en underscore `_`
 - Private attributter og metoder kan tilgås fra andre klasser
 
-# Eksempel på en klasse med offentlige attributter og metoder
+---
+
+### Eksempel på en klasse med offentlige attributter og metoder
 ```python
 class Student:
     def __init__(self, name, age):
@@ -155,7 +185,9 @@ class Student:
 ```
 Attributterne `name` og `age` og metoden `say_hello` er offentlige.
 
-# Eksempel på en klasse med private attributter og metoder
+---
+
+### Eksempel på en klasse med private attributter og metoder
 Vi tilføjer en attribut `cprnr` som bliver privat ved at starte navnet med en underscore `_`.
 ```python
 class Student:
@@ -167,8 +199,9 @@ class Student:
     def _get_cpr_nr(self):
         return self._cprnr
 ```
+---
 
-# Oprette en student
+### Oprette en student
 ```python
 if _name_ == '_main_':
     s1 = Student('Alice', 25, '123456-7890')
@@ -178,7 +211,9 @@ if _name_ == '_main_':
 ```
 Bemærk if-testen, der sikrer, at koden kun køres, hvis filen køres som hovedprogram.
 
-# Operator overloading
+---
+
+### Operator overloading
 - Python tillader operator overloading
 - Dette betyder, at operatører som `+`, `-`, `*`, `/` og `==` kan tilpasses til at virke med brugerdefinerede klasser
 - Dette gøres ved at tilføje specielle metoder til klassen
@@ -187,7 +222,9 @@ Bemærk if-testen, der sikrer, at koden kun køres, hvis filen køres som hovedp
 - Se https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types for en komplet liste
 - Disse metoder kaldes automatisk, når operatørerne bruges på objekter af klassen
 
-# Eksempel på operator overloading
+---
+
+### Eksempel på operator overloading
 ```python
 class Point:
     def __init__(self, x, y):
@@ -202,7 +239,9 @@ class Point:
 ```
 Vi tilføjer metoderne `__add__` og `__eq__` til klassen `Point`.
 
-# Brug af operator overloading
+---
+
+### Brug af operator overloading
 ```python
 p1 = Point(1, 2)
 p2 = Point(3, 4)
@@ -213,8 +252,9 @@ print(p1 == Point(1, 2)) # True
 ```
 Vi bruger metoderne `__add__` og `__eq__` til at tilføje to punkter og sammenligne to punkter.
 
+---
 
-# Nedarvning
+### Nedarvning
 - Nedarvning er en måde at opbygge klasser på
 - En klasse kan nedarve fra en anden klasse
 - Den nedarvende klasse kaldes en underklasse
@@ -223,7 +263,9 @@ Vi bruger metoderne `__add__` og `__eq__` til at tilføje to punkter og sammenli
 - En underklasse kan tilføje nye attributter og metoder og ændre eksisterende metoder
 - En underklasse kan også tilføje en konstruktør, der kaldes superklassens konstruktør
 
-# Eksempel på nedarvning
+---
+
+### Eksempel på nedarvning
 ```python
 class Animal:
     def __init__(self, name):
@@ -238,7 +280,9 @@ class Dog(Animal):
 ```
 Vi opretter en superklasse `Animal` og en underklasse `Dog`, der nedarver fra superklassen.
 
-# Brug af nedarvning
+---
+
+### Brug af nedarvning
 ```python
 a1 = Animal('Fido')
 d1 = Dog('Rex')
@@ -249,13 +293,17 @@ print(d1.speak()) # Woof
 ```
 Vi opretter instanser af superklassen `Animal` og underklassen `Dog` og kalder metoderne `speak`.
 
-# Hvad med super?
+---
+
+### Hvad med super?
 - `super` er en indbygget funktion, der bruges til at kalde metoder fra superklassen
 - `super` bruges i konstruktøren for at kalde superklassens konstruktør
 - `super` bruges også til at kalde superklassens metoder
 - `super` bruges i stedet for at bruge superklassens navn direkte
 
-# Eksempel på brug af super
+---
+
+### Eksempel på brug af super
 ```python
 class Animal:
     def __init__(self, name):
@@ -274,7 +322,9 @@ class Dog(Animal):
 ```
 Vi bruger `super` til at kalde superklassens konstruktør i underklassens konstruktør.
 
-# Brug af super
+---
+
+### Brug af super
 ```python
 d1 = Dog('Rex', 'Labrador')
 print(d1.name) # Rex
@@ -283,13 +333,17 @@ print(d1.speak()) # Woof
 ```
 Vi opretter en instans af underklassen `Dog` og kalder metoderne `speak`.
 
-# Abstrakte klasser
+---
+
+### Abstrakte klasser
 - En abstrakt klasse er en klasse, der ikke kan oprettes
 - En abstrakt klasse bruges som skabelon for andre klasser
 - En abstrakt klasse kan have metoder, der ikke er implementeret
 - En abstrakt klasse kan have metoder, der skal implementeres i underklasser
 
-# Eksempel på abstrakt klasse
+---
+
+### Eksempel på abstrakt klasse
 ```python
 from abc import ABC, abstractmethod
 
@@ -304,7 +358,9 @@ class Animal(ABC):
 Vi opretter en abstrakt klasse `Animal` med en abstrakt metode `speak`.
 Abstrakte klasser importeres fra modulet `abc`.
 
-# Brug af abstrakt klasse
+---
+
+### Brug af abstrakt klasse
 ```python
 class Dog(Animal):
     def speak(self):
@@ -315,7 +371,9 @@ class Cat(Animal):
         return
 ```
 
-# Brug af abstrakt klasse
+---
+
+### Brug af abstrakt klasse
 ```python
 d1 = Dog('Rex')
 c1 = Cat('Whiskers')
@@ -324,13 +382,17 @@ print(c1.speak()) # Fejl, da metoden ikke er implementeret
 ```
 Vi opretter underklasser `Dog` og `Cat` af abstrakt klassen `Animal` og kalder metoden `speak`.
 
-# Kan vi udvide en abstrakt klasse i børneklassen?
+---
+
+### Kan vi udvide en abstrakt klasse i børneklassen?
 - Ja, vi kan udvide en abstrakt klasse i børneklassen
 - Vi kan tilføje attributter og metoder i børneklassen
 - Vi kan også tilføje en konstruktør, der kaldes superklassens konstruktør
 - Vi kan også tilføje en metode, der skal implementeres i børneklassen
 
-# Eksempel på udvidelse af abstrakt klasse
+---
+
+### Eksempel på udvidelse af abstrakt klasse
 ```python
 class Dog(Animal):
     def __init__(self, name, breed):
@@ -345,7 +407,9 @@ class Dog(Animal):
 ```
 Vi udvider abstrakt klassen `Animal` med en konstruktør og en metode `wag_tail`.
 
-# Brug af udvidelse af abstrakt klasse
+---
+
+### Brug af udvidelse af abstrakt klasse
 ```python
 d1 = Dog('Rex', 'Labrador')
 print(d1.name) # Rex
@@ -355,14 +419,18 @@ print(d1.wag_tail()) # Wagging tail
 ```
 Vi opretter en instans af underklassen `Dog` og kalder metoderne `speak` og `wag_tail`.
 
-# Hvad er polymorfi?
+---
+
+### Hvad er polymorfi?
 - Polymorfi betyder, at en metode kan have forskellige former
 - Polymorfi bruges til at implementere metoder, der kan have forskellige implementeringer i underklasser
 - Polymorfi bruges til at implementere metoder, der kan tage forskellige typer som argumenter
 - Polymorfi bruges til at implementere metoder, der kan returnere forskellige typer
 - Polymorfi bruges til at implementere metoder, der kan have forskellige signaturer
+
+---
   
-# Eksempel på polymorfi
+### Eksempel på polymorfi
 ```python
 class Animal:
     def speak(self):
@@ -378,7 +446,9 @@ class Cat(Animal):
 ```
 Vi opretter en superklasse `Animal` og underklasser `Dog` og `Cat`, der nedarver fra superklassen.
 
-# Brug af polymorfi
+---
+
+### Brug af polymorfi
 ```python
 def make_animal_speak(animal):
     print(animal.speak())
@@ -392,7 +462,9 @@ make_animal_speak(c1) # Meow
 ```
 Vi opretter instanser af superklassen `Animal` og underklasserne `Dog` og `Cat` og kalder metoden `speak`.
 
-# Hvad er en statisk metode?
+---
+
+### Hvad er en statisk metode?
 - En statisk metode er en metode, der tilhører klassen og ikke objekterne
 - En statisk metode kaldes med klassen som argument og ikke objektet
 - En statisk metode kan tilgås fra klassen og ikke objekterne
@@ -400,7 +472,9 @@ Vi opretter instanser af superklassen `Animal` og underklasserne `Dog` og `Cat` 
 - En statisk metode angives ved at bruge dekoratoren `@staticmethod`
 - En statisk metode kaldes med klassen som argument og ikke objektet
 
-# Eksempel på statisk metode
+---
+
+### Eksempel på statisk metode
 ```python
 class Math:
     @staticmethod
@@ -413,14 +487,18 @@ class Math:
 ```
 Vi opretter en klasse `Math` med statiske metoder `add` og `subtract`.
 
-# Brug af statisk metode
+---
+
+### Brug af statisk metode
 ```python
 print(Math.add(2, 3)) # 5
 print(Math.subtract(5, 3)) # 2
 ```
 Vi kalder de statiske metoder `add` og `subtract` fra klassen `Math`.
 
-# Hvad er en klasse metode?
+---
+
+### Hvad er en klasse metode?
 - En klasse metode er en metode, der tilhører klassen og ikke objekterne
 - En klasse metode kaldes med klassen som argument og ikke objektet
 - En klasse metode kan tilgås fra klassen og ikke objekterne
@@ -441,7 +519,9 @@ class Person:
 ```
 Vi opretter en klasse `Person` med en klasse metode `get_count`.
 
-# Brug af klasse metode
+---
+
+### Brug af klasse metode
 ```python
 p1 = Person('Alice')
 p2 = Person('Bob')
@@ -449,7 +529,9 @@ print(Person.get_count()) # 2
 ```
 Vi opretter instanser af klassen `Person` og kalder metoden `get_count` fra klassen `Person`.
 
-# Klasser vs. moduler
+---
+
+### Klasser vs. moduler
 - Klasser bruges til at opbygge objekter
 - Moduler bruges til at opbygge programmer
 - Klasser bruges til at opbygge objekter, der har attributter og metoder
@@ -457,7 +539,9 @@ Vi opretter instanser af klassen `Person` og kalder metoden `get_count` fra klas
 - Klasser bruges til at opbygge objekter, der kan nedarve fra andre klasser
 - Moduler bruges til at opbygge programmer, der kan importeres i andre moduler
 
-# Et modul af klasser
+---
+
+### Et modul af klasser
 ```python
 # person.py
 class Person:
@@ -470,7 +554,9 @@ class Person:
 ```
 Vi opretter en klasse `Person` i modulet `person`.
 
-# Brug af modul af klasser
+---
+
+### Brug af modul af klasser
 ```python
 from person import Person
 
@@ -483,13 +569,17 @@ p2.say_hello()
 Vi importerer klassen `Person` fra modulet `person` og opretter instanser af klassen. Forudsætter, at `person.py` findes i samme mappe som hovedprogrammet.
 Hvis `person.py` findes i en undermappe, kan vi bruge `from folder.person import Person`.
 
-# Decorators - hvad er det?
+---
+
+### Decorators - hvad er det?
 - En decorator er en funktion, der tager en anden funktion som argument
 - En decorator bruges til at udvide funktionaliteten af en funktion
 - En decorator bruges til at tilføje funktionalitet til en funktion uden at ændre funktionen
 - En decorator bruges til at tilføje funktionalitet til en klasse eller metode uden at ændre klassen eller metoden
 
-# Simpelt eksempel på decorator
+---
+
+### Simpelt eksempel på decorator
 ```python
 def my_decorator(func):
     def wrapper():
@@ -505,7 +595,9 @@ say_hello = my_decorator(say_hello)
 ```
 Vi opretter en decorator `my_decorator` og dekorerer funktionen `say_hello`.
 
-# Brug af decorator
+---
+
+### Brug af decorator
 ```python
 say_hello()
 ```
@@ -517,7 +609,9 @@ Hello!
 Something is happening after the function is called.
 ```
 
-# Decorator med `@`-notation
+---
+
+### Decorator med `@`-notation
 ```python
 def my_decorator(func):
     def wrapper():
@@ -532,7 +626,9 @@ def say_hello():
 ```
 Vi dekorerer funktionen `say_hello` med `my_decorator` ved brug af `@`-notation.
 
-# Brug af decorator med `@`-notation
+---
+
+### Brug af decorator med `@`-notation
 ```python
 say_hello()
 ```
@@ -544,7 +640,9 @@ Hello!
 Something is happening after the function is called.
 ```
 
-# Decorator med argumenter
+---
+
+### Decorator med argumenter
 ```python
 def my_decorator(func):
     def wrapper(*args, **kwargs):
@@ -559,7 +657,9 @@ def say_hello(name):
 ```
 Vi dekorerer funktionen `say_hello` med `my_decorator` og tilføjer argumenter til `wrapper`.
 
-# Brug af decorator med argumenter
+---
+
+### Brug af decorator med argumenter
 ```python
 say_hello('Alice')
 ```
@@ -571,7 +671,9 @@ Hello, Alice!
 Something is happening after the function is called.
 ```
 
-# Decorator med argumenter
+---
+
+### Decorator med argumenter
 ```python
 def my_decorator(prefix):
     def decorator(func):
@@ -588,7 +690,9 @@ def say_hello(name):
 ```
 Vi opretter en decorator `my_decorator` med argumenter og dekorerer funktionen `say_hello`.
 
-# Brug af decorator med argumenter
+---
+
+### Brug af decorator med argumenter
 ```python
 say_hello('Alice')
 ```
@@ -600,15 +704,18 @@ Hello, Alice!
 DEBUG: Something is happening after the function is called.
 ```
 
-# Klassediagrammer
+---
+
+### Klassediagrammer
 - Et klassediagram er en grafisk repræsentation af klasser og deres relationer
 - Et klassediagram viser klasser, attributter og metoder
 - Et klassediagram viser relationer mellem klasser
 - Et klassediagram viser nedarvning, association, aggregering og komposition
 - Et klassediagram viser offentlige og private attributter og metoder
 
+---'
 
-# Klassediagram
+### Klassediagram
 Vi kan modellere klasser og deres relationer ved brug af et klassediagram:
 ```mermaid
 classDiagram
