@@ -735,10 +735,6 @@ classDiagram
     Person <|-- Student
 ```
 
+---
 
-
-
-
-
-
-
+### Tak for i dag!
