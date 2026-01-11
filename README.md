@@ -58,12 +58,11 @@ Modul Nr       | Kapitel     | Indhold                     | Øvelser     |
 9 | PY: 14 | Moduler og pakker | ØP:**37** |
 10 | PY: 15 | Strenge og lidt om regulære udtryk | ØP:**36, 29**, 30|
 11 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/slides/OOP.pdf) | Objektorienteret programmering og principperne bag | ØP:**38, 39, 40**|
-12 | PY11, AdvPy:5  | Videregående Python: Zip funktionen | ØP:**49** |
-13 | PY11, AdvPy:4  | Videregående Python: Lambda udtryk |ØP:**50** |
-14 | PY11, AdvPy:4  | Videregående Python: filter funktion | ØP:**53**|
-15 | PY11, AdvPy:4  | Videregående Python: map funktion |ØP:**52** |
-16 | PY11, AdvPy:4  | Videregående Python: reduce funktion |ØP:**54** |
-17 | PY11, AdvPy:6  | Videregående Python: Decorators | |
-18 | PY11, AdvPy:10-11  | Videregående Python: Tests, docTests, UnitTests, PyTests | |
-19 | PY11, AdvPy:12-13  | Videregående Python: Regulære udtryk | |
-20 | PY11, AdvPy:12-13  | Videregående Python: Tråde og parallellisering |51 |
+12 | PY11, AdvPy:4-5  | Højere ordens funktioner | ØP:**49,50,52,53,54** |
+13 | PY11, AdvPy:6  | Videregående Python: Decorators | |
+14 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/slides/testsinpython.pdf)  | Videregående Python: Tests, docTests, UnitTests, PyTests | |
+15 | PY11, AdvPy:12-13  | Videregående Python: Regulære udtryk | |
+16 | PY11, AdvPy:10-11  | Videregående Python: Generators og Iterators |50 |
+17 | PY11, AdvPy:12-13  | Videregående Python: Tråde og parallellisering |51 |
+18 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/slides/webscraping_python.pdf)  | Webscraping | |
+ 
