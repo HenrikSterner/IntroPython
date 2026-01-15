@@ -379,3 +379,125 @@ Eksempler på opgaver, der kan drage fordel af parallelisering ved hjælp af hø
 Ved at anvende højere ordens funktioner i forbindelse med parallelisering kan vi udnytte moderne hardware bedre og opnå betydelige forbedringer i ydeevnen ved behandling af store datamængder.
 
 På kodeniveau kan vi bruge moduler som `concurrent.futures` eller `multiprocessing` i Python til at implementere parallelisering ved hjælp af højere ordens funktioner som `map` og `reduce`. Disse moduler giver os mulighed for at oprette tråde eller processer, der kan køre funktioner parallelt på tværs af flere kerner.
+
+### Parallellisering af MapReduce i Python
+
+I det følgende vil vi se et eksempel på, hvordan vi kan implementere en simpel MapReduce-opgave i Python ved hjælp af `multiprocessing` modulet til at parallelisere behandlingen af data. 
+
+Målet er at tælle antallet af primtal i et stort interval ved hjælp af MapReduce paradigmet. Primtal er tal større end 1, der kun er delelige med 1 og sig selv (f.eks. 2, 3, 5, 7, 11, osv.). Primtal er vigtige i mange områder af datalogi og matematik, herunder kryptografi og talteori.
+
+Vi vil opdele opgaven i to faser: Map-fasen, hvor vi tæller primtal i delintervaller, og Reduce-fasen, hvor vi summerer resultaterne fra Map-fasen for at få det samlede antal primtal i hele intervallet.
+
+Til at sammenligne ydeevnen vil vi implementere både en sekventiel version og en parallel version af MapReduce-opgaven.
+
+Først viser vi den fulde kode, og derefter forklarer vi de enkelte dele:
+
+```python
+import time
+from multiprocessing import Pool
+from functools import reduce
+```
+
+Først importerer vi de nødvendige moduler: `time` til at måle eksekveringstid, `Pool` fra `multiprocessing` til at oprette en pulje af processer til parallel behandling, og `reduce` fra `functools` til at aggregere resultaterne i Reduce-fasen.
+
+```python
+def is_prime(n):
+    """Tjek om et tal er primtal (CPU-intensiv)"""
+    if n < 2:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    for i in range(3, int(n**0.5) + 1, 2):
+        if n % i == 0:
+            return False
+    return True
+
+def count_primes_in_range(start_end):
+    """MAP: tæl primtal i en range"""
+    start, end = start_end
+    count = 0
+    for n in range(start, end):
+        if is_prime(n):
+            count += 1
+    return count
+```
+
+Ovenfor har vi to funktioner: `is_prime`, der tjekker om et tal er et primtal, og `count_primes_in_range`, der tæller antallet af primtal i et givet interval. `count_primes_in_range` fungerer som vores Map-funktion.
+
+Endelig kommer hoveddelen af programmet, hvor vi implementerer både den sekventielle og den parallelle version af MapReduce-opgaven samt måler deres ydeevne:
+
+```python
+def main():
+    # Stor opgave: tæl primtal fra 0 til 500000
+    total_range = 50*10**5
+    # set to cpu_count() manually for progress tracking
+    num_processes = 8
+    
+    # Del ranges op
+    range_size = total_range // num_processes
+    ranges = [(i * range_size, (i + 1) * range_size) for i in range(num_processes)]
+    ranges[-1] = (ranges[-1][0], total_range)
+    
+    # SEKVENTIEL VERSION
+    print("=== SEQUENTIAL VERSION ===")
+    start_tid = time.time()
+    sekventiel_resultat = 0
+    for i, r in enumerate(ranges):
+        result = count_primes_in_range(r)
+        sekventiel_resultat += result
+        elapsed = time.time() - start_tid
+        print(f"  Range {i+1}/{len(ranges)} færdig - Tid: {elapsed:.2f}s")
+    sekventiel_tid = time.time() - start_tid
+    print(f"Primtal fundet: {sekventiel_resultat}")
+    print(f"Tid: {sekventiel_tid:.4f} sekunder\n")
+    
+    # PARALLEL VERSION - MAP/REDUCE
+    print("=== PARALLEL MAP/REDUCE VERSION ===")
+    start_tid = time.time()
+    
+    with Pool(processes=num_processes) as pool:
+        # MAP: hver proces tæller sin range
+        resultater = []
+        for i, result in enumerate(pool.imap_unordered(count_primes_in_range, ranges)):
+            resultater.append(result)
+            elapsed = time.time() - start_tid
+            print(f"  Range {i+1}/{len(ranges)} færdig - Tid: {elapsed:.2f}s")
+    # REDUCE: kombiner alle resultater ved at summe dem
+    print("  Reducer resultater...")
+    parallel_resultat = reduce(lambda x, y: x + y, resultater)
+    parallel_tid = time.time() - start_tid
+    print(f"Primtal fundet: {parallel_resultat}")
+    print(f"Tid: {parallel_tid:.4f} sekunder")
+    print(f"Speedup: {sekventiel_tid / parallel_tid:.2f}x hurtigere!")
+
+if __name__ == "__main__":
+    main()
+```
+
+I `main` funktionen definerer vi det samlede interval for primtalstælling og opdeler det i delintervaller baseret på antallet af processer.
+
+Vi implementerer først den sekventielle version, hvor vi tæller primtal i hvert interval én ad gangen og måler tiden for hver færdiggjort interval.
+
+Derefter implementerer vi den parallelle version ved hjælp af en pulje af processer. Vi bruger `pool.imap_unordered` til at anvende `count_primes_in_range` funktionen på hvert interval parallelt. Resultaterne samles i en liste, som vi derefter reducerer ved at summere dem for at få det samlede antal primtal.
+Til sidst måler vi tiden for den parallelle version og beregner speedup i forhold til den sekventielle version.
+
+Vi bemærker, at vi kører:
+
+```python
+if __name__ == "__main__":
+    main()
+```
+
+Det sker for at sikre, at `main` funktionen kun køres, når scriptet eksekveres direkte, hvilket er vigtigt for korrekt funktionalitet ved brug af `multiprocessing` modulet.
+
+Den parallelle version er markant hurtigere end den sekventielle version, især for store datamængder, hvilket demonstrerer fordelene ved at bruge højere ordens funktioner i forbindelse med parallelisering.
+
+
+#### Øvelse: Parallel MapReduce
+
+* Implementer en parallel MapReduce-opgave i Python ved hjælp af `multiprocessing` modulet for at tælle antallet af lige tal i et stort interval (f.eks. fra 0 til 1 million). Brug højere ordens funktioner som `map` og `reduce` i din implementering.
+* Sammenlign ydeevnen af din parallelle MapReduce-implementering med en sekventiel version, og mål tiden for begge versioner. Print resultaterne og den opnåede speedup.
+* Eksperimenter med forskellige antal processer i din parallelle implementering for at se, hvordan det påvirker ydeevnen. Prøv at finde det optimale antal processer for din maskine.
+* Find eller konstruer en meget stor datamængde (f.eks. en stor tekstfil eller et stort talinterval) og brug din parallelle MapReduce-implementering til at behandle denne data. F.eks. kan du tælle forekomsten af bestemte ord i en stor tekstfil eller finde summen af alle tal i et stort interval.

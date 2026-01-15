@@ -58,7 +58,7 @@ Modul Nr       | Kapitel     | Indhold                     | Øvelser     |
 9 | PY: 14 | Moduler og pakker | ØP:**37** |
 10 | PY: 15 | Strenge og lidt om regulære udtryk | ØP:**36, 29**, 30|
 11 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/slides/OOP.pdf) | Objektorienteret programmering og principperne bag | ØP:**38, 39, 40**|
-12 | PY11, AdvPy:4-5  | Højere ordens funktioner | ØP:**49,50,52,53,54** |
+12 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/higherorderfunctions.pdf)  | Højere ordens funktioner | ØP:**49,50,52,53,54** |
 13 | PY11, AdvPy:6  | Videregående Python: Decorators | |
 14 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/slides/testsinpython.pdf)  | Videregående Python: Tests, docTests, UnitTests, PyTests | |
 15 | PY11, AdvPy:12-13  | Videregående Python: Regulære udtryk | |
