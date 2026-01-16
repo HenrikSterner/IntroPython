@@ -61,8 +61,9 @@ Modul Nr       | Kapitel     | Indhold                     | Øvelser     |
 12 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/higherorderfunctions.pdf)  | Højere ordens funktioner | ØP:**49,50,52,53,54** |
 13 | PY11, AdvPy:6  | Videregående Python: Decorators | |
 14 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/slides/testsinpython.pdf)  | Videregående Python: Tests, docTests, UnitTests, PyTests | |
-15 | PY11, AdvPy:12-13  | Videregående Python: Regulære udtryk | |
+15 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/slides/testsinpython.pdf)  | Videregående Python: Regulære udtryk | |
 16 | PY11, AdvPy:10-11  | Videregående Python: Generators og Iterators |50 |
 17 | PY11, AdvPy:12-13  | Videregående Python: Tråde og parallellisering |51 |
 18 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/slides/webscraping_python.pdf)  | Webscraping | |
+19 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/slides/graphs.pdf)  | Grafer og netværk | Se noter | 
  
