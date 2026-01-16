@@ -66,4 +66,5 @@ Modul Nr       | Kapitel     | Indhold                     | Øvelser     |
 17 | PY11, AdvPy:12-13  | Videregående Python: Tråde og parallellisering |51 |
 18 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/slides/webscraping_python.pdf)  | Webscraping | |
 19 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/slides/graphs.pdf)  | Grafer og netværk | Se noter | 
+20 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/slides/traer.pdf)  | Træer | Se noter |
  
