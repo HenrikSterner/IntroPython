@@ -67,4 +67,13 @@ Modul Nr       | Kapitel     | Indhold                     | Øvelser     |
 18 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/slides/webscraping_python.pdf)  | Webscraping | |
 19 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/slides/graphs.pdf)  | Grafer og netværk | Se noter | 
 20 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/slides/traer.pdf)  | Træer | Se noter |
+21 | [Noter](https://github.com/HenrikSterner/IntroPython/blob/main/slides/kryptering.pdf)  | Kryptering | Se noter |
  
+
+På vej:
+
+- Kryptering i Python
+- Spilprogrammering med Pygame
+- Sorteringsalgoritmer
+- Algoritmeanalyse og Big O notation
+- Algoritmisk geometri i Python
